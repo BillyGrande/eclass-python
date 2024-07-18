@@ -1,0 +1,49 @@
+html { 
+    font-family: sans-serif; 
+    background: #ebe7d3; 
+    padding: 1rem; 
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--sidebarWidth);
+    min-width: var(--sidebarMinWidth);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    resize: horizontal;
+  }
+
+.sidebar .sidebar-header {
+    flex-direction: row;
+}
+
+.sidebar .sidebar-projectName {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--sidebarAccentMain);
+    margin: 0;
+    padding: 0;
+    max-width: 230px;
+    word-wrap: break-word;
+  }
+
+.sidebar .sidebar-listNav {
+    display: flex;
+    margin: 0;
+    padding: 4px 4px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+  }

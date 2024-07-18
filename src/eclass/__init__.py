@@ -1,2 +1,4 @@
-def hello() -> str:
-    return "Hello from eclass!"
+from flask import Flask
+app = Flask(__name__)
+
+import eclass.views
