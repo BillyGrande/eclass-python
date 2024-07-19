@@ -1,4 +1,23 @@
+@font-face {
+  font-family:"Lato-black", sans-serif;
+  src:url(Lato-Black.woff2) format("woff2"),
+  url(Lato-Black.woff2) format("woff");
+  font-weight:700;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"Lato-light", sans-serif;
+  src:url(Lato-Light.woff2) format("woff2"),
+  url(Lato-Black.woff2) format("woff");
+  font-weight:700;
+  font-style:normal;
+}
+
 :root {
+  --buttonWeight: 400;
+  --buttonText: "Lato-light", sans-serif;
+  --fontSpecial: "Lato black", sans-serif;
   --sidebarWidth: 300px;
   --sidebarMinWidth: 300px;
   --sidebarTransitionDuration: .3s;
@@ -6,6 +25,9 @@
   --sidebarColor: #ded9e2;
   --contentColor: #f7f4ea;
   --sansFontFamily: "Lato", sans-serif;
+  --navTabBorderWidth: 4px;
+  --sidebarLanguageAccentBar: #80A1D4;
+  --paddingLeft: 0.5rem
 }
 
 * { 
@@ -27,12 +49,11 @@ main {
 .content {
    /* margin-left: 1rem; (/
    /* border-left: 1 rem; */
-    padding: 1rem 1rem 1rem 5rem;
+    padding: 1rem 1rem 1rem 15rem;
     position: absolute;
     margin: 0 auto;
     width: calc(100% - var(--sidebarMinWidth));
     left: var(--sidebarMinWidth);
-    
   }
 
 .sidebar {
@@ -54,23 +75,27 @@ main {
   background: var(--sidebarHeaderColor);
 }
 
-.sidebar-header {
+.sidebar-header > div{
   background: var(--sidebarHeaderColor);
+  padding-left: 0.7rem;
+  padding-bottom: 1rem;
+  padding-top: 0.3rem;
+  font-family: var(--buttonText);
+  font-weight: 350;
+  font-size: 0.8rem;
 }
 
-.sidebar-header > a {
+.sidebar-header  a.sidebar-banner {
   background: var(--sidebarHeaderColor);
   text-decoration: none;
   color: black;
   font-size: 1.5rem;
+  padding-left: var(--paddingLeft);
+  font-family: var(--fontSpecial);
+  font-weight: 700;
 }
 
-.sidebar-banner > a{
-  background: var(--sidebarHeaderColor);
-  font-size: 32px;
-}
-
-.sidebar-header > ul {
+.sidebar-header  ul {
   background: var(--sidebarHeaderColor);
   display: flex;
   margin: 0;
@@ -78,15 +103,45 @@ main {
   list-style: none;
 }
 
-.sidebar-header li {
+.sidebar-header li a{
   background: var(--sidebarHeaderColor);
 }
 
-.unselected > a {
-  background: var(--sidebarHeaderColor);
+.sidebar-header button{
+  border: none;
+  padding: 0.3rem;
+  border-top: var(--navTabBorderWidth) solid var(--sidebarHeaderColor);
+  font-size: 0.9rem;
+  text-transform:uppercase;
+  background-color: var(--sidebarHeaderColor);
+  font-family: var(--buttonText);
+  font-weight: var(--buttonWeight);
 }
 
-.sidebar-header button {
-  background: none;
-  border: 0;
+.sidebar-header button.selected{
+  background-color: var(--sidebarColor);
+  border-top: var(--navTabBorderWidth) solid var(--sidebarLanguageAccentBar);
 }
+
+.sidebar-header button:hover {
+  background: rgba(222, 217, 226, 0.3);
+  border-top: var(--navTabBorderWidth) solid rgba(128, 161, 212, 0.5);
+  cursor: pointer;
+}
+
+.sidebar-header button.selected:hover{
+  background-color: var(--sidebarColor);
+  border-top: var(--navTabBorderWidth) solid var(--sidebarLanguageAccentBar);
+}
+
+/*
+.sidebar-button {
+  padding:26px 12px 18px 19px;
+  position:fixed;
+  z-index:200;
+  top:0;
+  left:0;
+  will-change:transform
+}
+*/
+

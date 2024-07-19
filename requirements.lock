@@ -7,15 +7,12 @@
 #   all-features: false
 #   with-sources: false
 #   generate-hashes: false
-#   universal: false
 
 -e file:.
 blinker==1.8.2
     # via flask
 click==8.1.7
     # via flask
-colorama==0.4.6
-    # via click
 flask==3.0.3
     # via eclass
 itsdangerous==2.2.0
