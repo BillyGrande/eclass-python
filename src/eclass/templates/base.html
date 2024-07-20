@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
     <title>Eclass</title>
 </head>
 <body>
@@ -36,17 +37,17 @@
         <div class="sidebar-tabpanel">
           <ul class="full-list">
             <li class="group">
-              Introduction
+              0. Introduction
               <li class="">
-                <a>Welcome</a>
+                <a href="{{ url_for('.welcome') }}">Welcome</a>
                 <ul class="tab">
-                  <li>What is Python</li>
+                  <li><a href="{{ url_for('.welcome', _anchor='what-is-python') }}">What is Python</a></li>
                   <li>Example</li>
                 </ul>
               </li>
             </li>
             <li class="group">
-              Data Types
+              1. Data Types
               <li class="">
                 <a>Numbers</a>
                 <ul class="tab">

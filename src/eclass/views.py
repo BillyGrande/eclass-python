@@ -8,3 +8,7 @@ def hello_world():
 @app.route("/hello/<message>")
 def hello(message=None):
     return render_template('hello.html',message=message)
+
+@app.route("/lessons/welcome")
+def welcome():
+    return render_template('welcome.html')

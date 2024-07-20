@@ -37,6 +37,15 @@
   background: var(--contentColor);
 }
 
+pre ,code {
+background-color: #f8fafc;
+font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+  text-decoration: none;
+  font-family: var(--sansFontFamily);
+}
 .parent {
   display: flex;
   flex-direction: row;
@@ -49,11 +58,12 @@ main {
 .content {
    /* margin-left: 1rem; (/
    /* border-left: 1 rem; */
-    padding: 1rem 1rem 1rem 15rem;
+    padding: 5rem 15rem 1rem 15rem;
     position: absolute;
     margin: 0 auto;
     width: calc(100% - var(--sidebarMinWidth));
     left: var(--sidebarMinWidth);
+    min-height: 100%;
   }
 
 .sidebar {
@@ -87,12 +97,12 @@ main {
 
 .sidebar-header  a.sidebar-banner {
   background: var(--sidebarHeaderColor);
-  text-decoration: none;
   color: black;
   font-size: 1.5rem;
   padding-left: var(--paddingLeft);
   font-family: var(--fontSpecial);
   font-weight: 700;
+  text-decoration: none;
 }
 
 .sidebar-header  ul {
@@ -144,12 +154,15 @@ main {
 .sidebar ul.full-list li.group {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: .8em;
+  font-size: .9em;
   margin: 1.5em 0 0;
   line-height: 1.8em;
   color: var(--sidebarSubheadings);
   padding-left: 15px;
+  font-family: var(--fontSpecial);
+
 }
+
 
 .sidebar ul.full-list li {
   line-height: 1.8em;
@@ -159,6 +172,7 @@ main {
 
 .sidebar ul.full-list a {
   background-color: var(--sidebarSubheadings);
+  color: black;
 }
 
 sidebar .full-list li a.expand + button.icon-expand {
@@ -187,3 +201,4 @@ sidebar .full-list li a.expand + button.icon-expand {
 }
 */
 
+pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#f3f3f3;color:#444}.hljs-comment{color:#697070}.hljs-punctuation,.hljs-tag{color:#444a}.hljs-tag .hljs-attr,.hljs-tag .hljs-name{color:#444}.hljs-attribute,.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-name,.hljs-selector-tag{font-weight:700}.hljs-deletion,.hljs-number,.hljs-quote,.hljs-selector-class,.hljs-selector-id,.hljs-string,.hljs-template-tag,.hljs-type{color:#800}.hljs-section,.hljs-title{color:#800;font-weight:700}.hljs-link,.hljs-operator,.hljs-regexp,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-symbol,.hljs-template-variable,.hljs-variable{color:#ab5656}.hljs-literal{color:#695}.hljs-addition,.hljs-built_in,.hljs-bullet,.hljs-code{color:#397300}.hljs-meta{color:#1f7199}.hljs-meta .hljs-string{color:#38a}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
