@@ -134,6 +134,48 @@ main {
   border-top: var(--navTabBorderWidth) solid var(--sidebarLanguageAccentBar);
 }
 
+.sidebar ul.tab, .sidebar ul.full-list {
+  background: var(--sidebarColor);
+  margin: 0;
+  padding:  0.3rem 0.5rem 0;
+  list-style: none;
+}
+
+.sidebar ul.full-list li.group {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .8em;
+  margin: 1.5em 0 0;
+  line-height: 1.8em;
+  color: var(--sidebarSubheadings);
+  padding-left: 15px;
+}
+
+.sidebar ul.full-list li {
+  line-height: 1.8em;
+  background-color: var(--sidebarSubheadings);
+  padding-left: 15px;
+}
+
+.sidebar ul.full-list a {
+  background-color: var(--sidebarSubheadings);
+}
+
+sidebar .full-list li a.expand + button.icon-expand {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  margin-right: 10px;
+  font-size: calc(1.2 * var(--sidebarFontSize));
+  line-height: var(--sidebarLineHeight);
+  position: absolute;
+  display: flex;
+  right: 0;
+  transform: translateY(calc(-100% - 4px));
+}
 /*
 .sidebar-button {
   padding:26px 12px 18px 19px;
