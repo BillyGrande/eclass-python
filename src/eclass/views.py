@@ -11,4 +11,8 @@ def hello(message=None):
 
 @app.route("/lessons/welcome")
 def welcome():
-    return render_template('welcome.html')
+    return render_template('lessons_welcome.html')
+
+@app.route("/tests/welcome")
+def test_welcome():
+    return render_template('tests_welcome.html')

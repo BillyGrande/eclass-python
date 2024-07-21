@@ -55,6 +55,7 @@ a {
 main {
   display: block;
 }
+
 .content {
    /* margin-left: 1rem; (/
    /* border-left: 1 rem; */
@@ -79,6 +80,7 @@ main {
   left: 0;
   width: var(--sidebarMinWidth);
   min-width: var(--sidebarMinWidth);
+  box-shadow: 0.4rem 0.3rem 0.2rem lightgray;
 }
 
 .sidebar-header {

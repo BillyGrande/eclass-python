@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Eclass</title>
 </head>
 <body>
@@ -20,22 +21,33 @@
             <a href="/" class="sidebar-banner">
             Python Eclass
             </a>
+            <button class="collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+            </button>
             <div>Python the right way</div>
             <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
                 <li>
-                  <button class="selected">
+                  <button id="lessons" class="selected" _="on click add .selected 
+                  then remove .selected from #tests 
+                  then remove [@hidden] from #ul-lessons
+                  then add [@hidden] to #ul-tests">
                     Lessons
                   </button>
                 </li>    
                 <li>
-                  <button>
+                  <button id="tests" _="on click add .selected 
+                  then remove .selected from #lessons 
+                  then remove [@hidden] from #ul-tests
+                  then add [@hidden] to #ul-lessons
+                  ">
                     Tests
                   </button>
                 </li>
               </ul>
         </div>
         <div class="sidebar-tabpanel">
-          <ul class="full-list">
+          <ul id="ul-lessons" class="full-list">
             <li class="group">
               0. Introduction
               <li class="">
@@ -57,6 +69,14 @@
                 </ul>
               </li>
             </li>
+          </ul>
+          <ul id="ul-tests" class="full-list" hidden>
+            <li class="group">
+              1. Data Types
+            <li class="">
+            <a>Test 1.1</a>
+            </li>
+          </li>
           </ul>
         </div>
     </nav>

@@ -21,3 +21,6 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/eclass"]
+
+[tool.rye.scripts]
+devserver = "flask --app src/eclass run"
