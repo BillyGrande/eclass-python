@@ -177,6 +177,14 @@ main {
   color: black;
 }
 
+ul.tab > li::marker{
+  color: var(--sidebarLanguageAccentBar);
+}
+
+ul.tab > li:hover {
+  list-style:square;
+}
+
 sidebar .full-list li a.expand + button.icon-expand {
   appearance: none;
   background-color: transparent;
