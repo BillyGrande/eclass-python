@@ -63,7 +63,9 @@ main {
     position: absolute;
     margin: 0 auto;
     width: calc(100% - var(--sidebarMinWidth));
-    left: var(--sidebarMinWidth);
+    left: 25%;
+    right: 500px;
+    max-width: 60%;
     min-height: 100%;
   }
 
