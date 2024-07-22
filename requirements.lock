@@ -15,6 +15,8 @@ click==8.1.7
     # via flask
 flask==3.0.3
     # via eclass
+greenlet==3.0.3
+    # via sqlalchemy
 itsdangerous==2.2.0
     # via flask
 jinja2==3.1.4
@@ -22,5 +24,9 @@ jinja2==3.1.4
 markupsafe==2.1.5
     # via jinja2
     # via werkzeug
+sqlalchemy==2.0.31
+    # via eclass
+typing-extensions==4.12.2
+    # via sqlalchemy
 werkzeug==3.0.3
     # via flask

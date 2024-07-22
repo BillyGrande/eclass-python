@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 dependencies = [
     "flask>=3.0.3",
+    "sqlalchemy>=2.0.31",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
