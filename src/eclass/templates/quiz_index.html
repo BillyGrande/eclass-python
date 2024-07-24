@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="quiz-card">
+<h1>Chapter {{ chapter }}</h1>
+
+<h2>Quiz questions For Chapter {{ chapter }}</h2>
+
+<form>
+<p>When you are ready to start the quiz pres the Start button</p>
+</form>
+<br>
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <div style="flex:0;width: 20%;"> </div> 
+    <div style="flex:1;width: 80%;"> </div>  
+    <button class="quiz-button" hx-get="/tests/0/0" hx-target="#quiz-card" hx-swap="inner-html">Start</button> 
+</div>
+</div>
+{% endblock content %}

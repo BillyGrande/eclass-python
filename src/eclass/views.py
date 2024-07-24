@@ -20,9 +20,13 @@ def welcome():
 def test_welcome():
     return render_template('tests_welcome.html')
 
-@app.route("/tests/introduction")
-def quiz_introduction():
-    statement = select(Question).filter_by(chapter=0)
+@app.route("/tests/<chapter>")
+def quiz_index(chapter=0):
+    return render_template('quiz_index.html', chapter=chapter)
+
+@app.route("/tests/<chapter>/<id>")
+def quiz_quetion(chapter=None, id=0):
+    statement = select(Question).filter_by(chapter=id)
     user_obj = db_session.scalars(statement).all()
     db_session.query()
-    return render_template('quiz.html', question=user_obj[0])
+    return render_template('quiz_questions.html', question=user_obj[0])
