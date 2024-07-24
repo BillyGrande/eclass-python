@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  
+<h1>Question 1/7</h1>
+
+<h2>{{ question.question }}</h2>
+
+
+<form>
+    <input type="radio" id="a1" name="answer" value='{{question.a1}}' required>
+    <label for="a1">{{question.a1}}</label><br>
+    <input type="radio" id="a2" name="answer" value="{{question.a2}}" required>
+    <label for="a2">{{question.a2}}</label><br>  
+    <input type="radio" id="a3" name="answer" value="{{question.a3}}" required>
+    <label for="a3">{{question.a3}}</label><br>
+    <input type="radio" id="a4" name="answer" value="{{question.a4}}" required>
+    <label for="a4">{{question.a4}}</label><br>
+    <br>
+</form>
+
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <button class="quiz-button">Back</button>
+    <div style="flex:1;width: 80%;"> </div>  
+    <button class="quiz-button">Next</button> 
+</div>
+
+{% endblock content %}
