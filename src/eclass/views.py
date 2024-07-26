@@ -4,7 +4,14 @@ from eclass.db.db import db_session
 from eclass.db.models import Question
 from sqlalchemy import select
 from flask import session
-fr
+import os
+
+
+secret_path = os.path.dirname(os.path.realpath(__file__)) +"/.secret"
+f = open(secret_path, "r")
+app.secret_key = f.readline()
+f.close()
+
 
 @app.route("/")
 def hello_world():
@@ -32,12 +39,13 @@ def quiz(chapter=None, id=None):
         user_obj = db_session.scalars(statement).all()
         db_session.query()
         return render_template('quiz_questions.html', question=user_obj[0])
-    
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
-        return redirect(url_for('index'))
+        return redirect(url_for('welcome'))
     return '''
         <form method="post">
             <p><input type=text name=username>
@@ -49,4 +57,4 @@ def login():
 def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
-    return redirect(url_for('index'))
+    return redirect(url_for('welcome'))

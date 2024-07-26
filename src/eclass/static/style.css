@@ -52,6 +52,7 @@ a {
   flex-wrap: wrap;
 }
 
+
 main {
   display: block;
 }
@@ -59,13 +60,13 @@ main {
 .content {
    /* margin-left: 1rem; (/
    /* border-left: 1 rem; */
-    padding: 5rem 15rem 1rem 15rem;
+    padding: 2rem 0rem 1rem 15rem;
     position: absolute;
     margin: 0 auto;
     width: calc(100% - var(--sidebarMinWidth));
     left: 25%;
     right: 500px;
-    max-width: 60%;
+    max-width: 950px;
     min-height: 100%;
   }
 
@@ -82,7 +83,7 @@ main {
   left: 0;
   width: var(--sidebarMinWidth);
   min-width: var(--sidebarMinWidth);
-  box-shadow: 0.4rem 0.3rem 0.2rem lightgray;
+  /*box-shadow: 0.4rem 0.3rem 0.2rem lightgray;*/
 }
 
 .sidebar-header {
@@ -212,6 +213,20 @@ sidebar .full-list li a.expand + button.icon-expand {
   will-change:transform
 }
 */
+.collapse{
+  background-color: var(--sidebarHeaderColor);
+}
+
+.collapse > img {
+  background-color: var(--sidebarHeaderColor);
+}
+
+.collapse button:hover{
+  background: var(--sidebarHeaderColor);
+  border-top: var(--sidebarHeaderColor);
+  cursor: pointer;
+}
+
 
 button.quiz-button {
   font-size: 1rem;
@@ -228,6 +243,10 @@ button.quiz-button:hover {
 
 button.quiz-button[disabled] {
   display: none;
+}
+
+.right-buttons {
+  float: right;
 }
 
 pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#f3f3f3;color:#444}.hljs-comment{color:#697070}.hljs-punctuation,.hljs-tag{color:#444a}.hljs-tag .hljs-attr,.hljs-tag .hljs-name{color:#444}.hljs-attribute,.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-name,.hljs-selector-tag{font-weight:700}.hljs-deletion,.hljs-number,.hljs-quote,.hljs-selector-class,.hljs-selector-id,.hljs-string,.hljs-template-tag,.hljs-type{color:#800}.hljs-section,.hljs-title{color:#800;font-weight:700}.hljs-link,.hljs-operator,.hljs-regexp,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-symbol,.hljs-template-variable,.hljs-variable{color:#ab5656}.hljs-literal{color:#695}.hljs-addition,.hljs-built_in,.hljs-bullet,.hljs-code{color:#397300}.hljs-meta{color:#1f7199}.hljs-meta .hljs-string{color:#38a}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}

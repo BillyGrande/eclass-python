@@ -17,15 +17,16 @@
 </head>
 <body>
   <div class="parent">
-    <nav class="sidebar">
+    <nav class="sidebar">    
         <div class="sidebar-header">
+          <div class="right-buttons">
+            <button class="collapse">
+              <img src="{{ url_for('static',filename='burger.svg') }}" alt="profile" width="20" height="20">
+            </button>
+          </div>  
             <a href="/" class="sidebar-banner">
             Python Eclass
             </a>
-            <button class="collapse">
-              <i class="fa fa-bars"></i>
-            </button>
-            </button>
             <div>Python the right way</div>
             <ul id="sidebar-listNav" class="sidebar-listNav" role="tablist">
                 <li>
@@ -90,10 +91,15 @@
 
     <main>
       <div class="content">
+        <div class="right-buttons">
+          <a href="/login">
+            <img src="{{ url_for('static',filename='profile.svg') }}" alt="profile" width="25" height="25">
+          </a>
+        </div>
           {% block content %}
           {% endblock content %}
       </div>
-    </main>  
+    </main>
   </div>
 </body>
 </html>
