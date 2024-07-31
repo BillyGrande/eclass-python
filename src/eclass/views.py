@@ -36,13 +36,12 @@ def quiz(chapter=None, id=None):
         return render_template('quiz_index.html', chapter=chapter)
     else:
         if session.get('logged_in'):
-            statement = select(Question).filter_by(chapter=id)
+            statement = select(Question).filter_by(chapter=chapter)
             question_obj = db_session.scalars(statement).all()
             length = len(question_obj)
             db_session.query()
             question = question_obj[0]
-            question_obj.pop(0)
-            session['questions'] = question_obj
+            session['questions'] = [2,3]
             return render_template('quiz_questions.html', question=question, length=length)
         else:
             return render_template('quiz_login.html', chapter=chapter)
@@ -53,11 +52,11 @@ def quiz_next(chapter=None, id=None):
     if id == None:
         return render_template('quiz_index.html', chapter=chapter)
     else:
-        question_obj = session.get('questions')
+        question_id= session.get('questions')[0]
+        statement = select(Question).filter_by(id=question_id)
+        question_obj = db_session.scalars(statement).all()
         question = question_obj[0]
-        question_obj.pop(0)
-        session['questions'] = question_obj
-        return render_template('quiz_questions.html', question=question, length=length)
+        return render_template('quiz_questions.html', question=question)
 
 
 
