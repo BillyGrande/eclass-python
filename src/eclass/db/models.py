@@ -14,6 +14,7 @@ class User(Base):
     def __repr__(self):
         return f'<User {self.name!r}>'
 
+
 class Question(Base):
     __tablename__ = 'questions'
     id = Column(Integer,primary_key=True)
