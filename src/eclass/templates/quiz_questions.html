@@ -1,4 +1,4 @@
-<h1>Question 1/7</h1>
+<h1>Question {{ length }}</h1>
 
 <h2>{{ question.question }}</h2>
 
@@ -18,5 +18,5 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <button class="quiz-button">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button">Next</button> 
+    <button class="quiz-button" hx-get="/tests/0/0/next" hx-target="#quiz-card" hx-swap="inner-html" >Next</button> 
 </div>

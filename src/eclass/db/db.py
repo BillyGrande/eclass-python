@@ -4,7 +4,6 @@ import os
 
 #file_path = os.path.abspath(os.getcwd()) +"eclass.db"
 file_path = os.path.join(os.path.dirname(__file__), 'eclass.db')
-print(file_path)
 
 #engine = create_engine('sqlite:///db/eclass.db')
 engine = create_engine('sqlite:///'+ file_path)
