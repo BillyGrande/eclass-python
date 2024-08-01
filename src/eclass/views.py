@@ -39,24 +39,31 @@ def quiz(chapter=None, id=None):
             statement = select(Question).filter_by(chapter=chapter)
             question_obj = db_session.scalars(statement).all()
             length = len(question_obj)
+            next_id=-1
+            if length > 1:
+                next_id = question_obj[1].id
             db_session.query()
             question = question_obj[0]
-            session['questions'] = [2,3]
             return render_template('quiz_questions.html', question=question, length=length)
         else:
-            return render_template('quiz_login.html', chapter=chapter)
+            return render_template('quiz_login.html', chapter=chapter, next_id=next_id)
 
 
-@app.route("/tests/<chapter>/<id>/next")
+@app.route("/tests/<chapter>/<id>/next", methods=['GET', 'POST'])
 def quiz_next(chapter=None, id=None):
-    if id == None:
-        return render_template('quiz_index.html', chapter=chapter)
-    else:
-        question_id= session.get('questions')[0]
+    if request.method == 'POST':
+        print(request.form['answer'])
+        session[id] = request.form['answer']
+        try:
+            question_id= session.get('questions')[0]
+            session['questions'] = session.get('questions').pop(0)
+            next_id = session.get('questions').pop(0)
+        except TypeError:
+            question_id = session.get('questions')
         statement = select(Question).filter_by(id=question_id)
         question_obj = db_session.scalars(statement).all()
         question = question_obj[0]
-        return render_template('quiz_questions.html', question=question)
+        return render_template('quiz_questions.html', question=question , next_id=next_id)
 
 
 

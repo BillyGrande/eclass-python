@@ -3,14 +3,14 @@
 <h2>{{ question.question }}</h2>
 
 
-<form>
-    <input type="radio" id="a1" name="answer" value='{{question.a1}}' required>
+<form id="question">
+    <input type="radio" id="a1" name="answer" value='a1' required>
     <label for="a1">{{question.a1}}</label><br>
-    <input type="radio" id="a2" name="answer" value="{{question.a2}}" required>
+    <input type="radio" id="a2" name="answer" value="a2" required>
     <label for="a2">{{question.a2}}</label><br>  
-    <input type="radio" id="a3" name="answer" value="{{question.a3}}" required>
+    <input type="radio" id="a3" name="answer" value="a3" required>
     <label for="a3">{{question.a3}}</label><br>
-    <input type="radio" id="a4" name="answer" value="{{question.a4}}" required>
+    <input type="radio" id="a4" name="answer" value="a4" required>
     <label for="a4">{{question.a4}}</label><br>
     <br>
 </form>
@@ -18,5 +18,6 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <button class="quiz-button">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-get="/tests/0/0/next" hx-target="#quiz-card" hx-swap="inner-html" >Next</button> 
+    <button class="quiz-button" hx-include="[name='answer']" hx-post="/tests/0/{{next_id}}/next" 
+    hx-target="#quiz-card" hx-swap="inner-html">Next</button> 
 </div>
