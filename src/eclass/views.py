@@ -30,23 +30,32 @@ def test_welcome():
     return render_template('tests_welcome.html')
 
 @app.route("/tests/<chapter>")
-@app.route("/tests/<chapter>/<id>")
+@app.route("/tests/<chapter>/<id>", methods=['GET', 'POST'])
 def quiz(chapter=None, id=None):
     if id == None:
-        return render_template('quiz_index.html', chapter=chapter)
+        return render_template('quiz_index.html', chapter=chapter, ids=[1,2,3], length=len([1,2,3]))
     else:
         if session.get('logged_in'):
-            statement = select(Question).filter_by(chapter=chapter)
+            if request.method == 'POST':
+                print(request.form['answer'])
+                session[id] = request.form['answer']
+            statement = select(Question).filter_by(id=id)
             question_obj = db_session.scalars(statement).all()
-            length = len(question_obj)
-            next_id=-1
-            if length > 1:
-                next_id = question_obj[1].id
-            db_session.query()
             question = question_obj[0]
-            return render_template('quiz_questions.html', question=question, length=length)
+            return render_template('quiz_questions.html', question=question)
         else:
-            return render_template('quiz_login.html', chapter=chapter, next_id=next_id)
+            return render_template('quiz_login.html', chapter=chapter)
+
+#@app.route("/tests/<chapter>/retrieve")
+def quiz_retrieve_questions(chapter=0):
+    statement = select(Question).filter_by(chapter=chapter)
+    ids = []
+    for item in db_session.scalars(statement).all():
+        ids.append(item.id)
+
+    return ids
+
+
 
 
 @app.route("/tests/<chapter>/<id>/next", methods=['GET', 'POST'])
@@ -62,7 +71,7 @@ def quiz_next(chapter=None, id=None):
             question_id = session.get('questions')
         statement = select(Question).filter_by(id=question_id)
         question_obj = db_session.scalars(statement).all()
-        question = question_obj[0]
+        question = question_obj
         return render_template('quiz_questions.html', question=question , next_id=next_id)
 
 

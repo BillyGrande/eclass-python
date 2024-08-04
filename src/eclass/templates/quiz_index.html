@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
+<form hidden>
+    <input hidden name="id" value="{{ ids | first}}">
+</form>
+
+<div _="on load set global myCounter to 0
+                set global myList to {{ ids }}
+                set global chapter to {{ chapter }}
+                log myList[myCounter]"></div>
+
 <div id="quiz-card">
 <h1>Chapter {{ chapter }}</h1>
 
@@ -13,7 +22,30 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <div style="flex:0;width: 20%;"> </div> 
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-get="/tests/0/0" hx-target="#quiz-card" hx-swap="inner-html">Start</button> 
 </div>
+
 </div>
+
+<button class="quiz-button" _='on click
+set chapter to $chapter
+set myCounter to $myCounter
+set myList to $myList
+set myId to myList[myCounter]
+increment $myCounter by 1
+fetch `/tests/${chapter}/${myId}` with method:"GET"
+put the result into #quiz-card.innerHTML
+remove @disabled from #Next
+add @disabled on me' >Start</button>
+
+<button id="Next" disabled class="quiz-button" _='on click
+set chapter to $chapter
+set myCounter to $myCounter
+set myList to $myList
+set myId to myList[myCounter]
+increment $myCounter by 1
+fetch `/tests/${chapter}/${myId}` with {answer: answer.value, id: id.value, method:"POST"}
+put the result into #quiz-card.innerHTML
+if myCounter + 1 >= {{ length }}
+    add @disabled
+end'>Next</button> 
 {% endblock content %}
