@@ -8,6 +8,7 @@
 <div _="on load set global myCounter to 0
                 set global myList to {{ ids }}
                 set global chapter to {{ chapter }}
+                set global tsifsa to 0
                 log myList[myCounter]"></div>
 
 <div id="quiz-card">
@@ -24,35 +25,13 @@
     <div style="flex:1;width: 80%;"> </div>  
 </div>
 
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <div style="flex:0;width: 20%;"> </div> 
+    <div style="flex:1;width: 80%;"> </div>  
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id}}" hx-target="#quiz-card" hx-swap="inner-html">Start</button> 
 </div>
 
-<button class="quiz-button" _='on click
-set chapter to $chapter
-set myCounter to $myCounter
-set myList to $myList
-set myId to myList[myCounter]
-increment $myCounter by 1
-fetch `/tests/${chapter}/${myId}` with method:"GET"
-put the result into #quiz-card.innerHTML
-remove @disabled from #Next
-add @disabled on me' >Start</button>
-
-<button id="Next" disabled class="quiz-button" _='on click
-if #question.answer.value is null
-    js alert("Please fill value") end
-end
-set answer to #question.answer.value
-set chapter to $chapter
-set myCounter to $myCounter
-set myList to $myList
-set myId to myList[myCounter]
-set formData to {name : "Joe", age: 35} 
-increment $myCounter by 1
-fetch `/tests/${chapter}/${myId}` with body:`id=${myId}&answer=${answer}`, method:"POST"
-put the result into #quiz-card.innerHTML
-if myCounter + 1 >= {{ length }}
-    add @disabled
-end'>Next</button> 
+</div>
 
 
 

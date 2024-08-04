@@ -33,17 +33,17 @@ def test_welcome():
 @app.route("/tests/<chapter>/<id>", methods=['GET', 'POST'])
 def quiz(chapter=None, id=None):
     if id == None:
-        return render_template('quiz_index.html', chapter=chapter, ids=[1,2,3], length=len([1,2,3]))
+        return render_template('quiz_index.html', chapter=chapter, ids=[1,2,3], length=len([1,2,3]), id=[1,2,3][0])
     else:
         if session.get('logged_in'):
             if request.method == 'POST':
-                print(request.data.decode("utf-8"))
-                print(type(request.data.decode("utf-8")))
-                #session[id] = request.data['answer']
-            statement = select(Question).filter_by(id=id)
+                #print(request.data.decode("utf-8"))
+                #print(type(request.data.decode("utf-8")))
+                session[1] = request.form['answer']
+            statement = select(Question).filter_by(id=1)
             question_obj = db_session.scalars(statement).all()
             question = question_obj[0]
-            return render_template('quiz_questions.html', question=question)
+            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=[1,2,3], length=len([1,2,3]), id=2)
         else:
             return render_template('quiz_login.html', chapter=chapter)
 
