@@ -39,11 +39,11 @@ def quiz(chapter=None, id=None):
             if request.method == 'POST':
                 #print(request.data.decode("utf-8"))
                 #print(type(request.data.decode("utf-8")))
-                session[1] = request.form['answer']
-            statement = select(Question).filter_by(id=1)
+                session[id] = request.form['answer']
+            statement = select(Question).filter_by(id=int(id))
             question_obj = db_session.scalars(statement).all()
             question = question_obj[0]
-            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=[1,2,3], length=len([1,2,3]), id=2)
+            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=[1,2,3], length=len([1,2,3]), id=id)
         else:
             return render_template('quiz_login.html', chapter=chapter)
 

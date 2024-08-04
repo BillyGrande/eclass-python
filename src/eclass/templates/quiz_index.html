@@ -1,15 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form hidden>
-    <input hidden name="id" value="{{ ids | first}}">
-</form>
-
-<div _="on load set global myCounter to 0
-                set global myList to {{ ids }}
-                set global chapter to {{ chapter }}
-                set global tsifsa to 0
-                log myList[myCounter]"></div>
 
 <div id="quiz-card">
 <h1>Chapter {{ chapter }}</h1>

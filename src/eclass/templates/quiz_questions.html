@@ -4,13 +4,12 @@
 
 {% set id = id | int %}
 
-{% set id_index = ids.index(id) | int %}
-{% set id_index = id_index + 1 %}
+{% set id_index = ids.index(id) + 1 %}
 
 {% set id = ids[id_index] %}
 
 <form id="question">
-    <input type="radio" id="a1" name="answer" value='a1' required>
+    <input type="radio" id="a1" name="answer" value="a1" required>
     <label for="a1">{{question.a1}}</label><br>
     <input type="radio" id="a2" name="answer" value="a2" required>
     <label for="a2">{{question.a2}}</label><br>  
