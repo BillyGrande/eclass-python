@@ -37,8 +37,9 @@ def quiz(chapter=None, id=None):
     else:
         if session.get('logged_in'):
             if request.method == 'POST':
-                print(request.form['answer'])
-                session[id] = request.form['answer']
+                print(request.data.decode("utf-8"))
+                print(type(request.data.decode("utf-8")))
+                #session[id] = request.data['answer']
             statement = select(Question).filter_by(id=id)
             question_obj = db_session.scalars(statement).all()
             question = question_obj[0]

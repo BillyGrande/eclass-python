@@ -38,14 +38,22 @@ remove @disabled from #Next
 add @disabled on me' >Start</button>
 
 <button id="Next" disabled class="quiz-button" _='on click
+if #question.answer.value is null
+    js alert("Please fill value") end
+end
+set answer to #question.answer.value
 set chapter to $chapter
 set myCounter to $myCounter
 set myList to $myList
 set myId to myList[myCounter]
+set formData to {name : "Joe", age: 35} 
 increment $myCounter by 1
-fetch `/tests/${chapter}/${myId}` with {answer: answer.value, id: id.value, method:"POST"}
+fetch `/tests/${chapter}/${myId}` with body:`id=${myId}&answer=${answer}`, method:"POST"
 put the result into #quiz-card.innerHTML
 if myCounter + 1 >= {{ length }}
     add @disabled
 end'>Next</button> 
+
+
+
 {% endblock content %}
