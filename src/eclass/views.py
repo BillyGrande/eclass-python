@@ -41,6 +41,7 @@ def quiz(chapter=None, id=None):
                 #print(type(request.data.decode("utf-8")))
                 session[id] = request.form['answer']
                 ids = request.form['ids-list']
+                ids = _urlencoded_to_list(ids)
             else:
                 ids = ["1","2","3"]
             statement = select(Question).filter_by(id=int(id))
@@ -100,3 +101,8 @@ def logout():
     session.pop('username', None)
     session.pop('logged_in', None)
     return redirect(url_for('welcome'))
+
+
+def _urlencoded_to_list(text):
+    text = "%5B'1'%2C%20'2'%2C%20'3'%5D".replace("%5B","").replace("%5D","").replace("%2C%20",",").replace("'","")
+    return text.split(",")
