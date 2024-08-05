@@ -2,11 +2,11 @@
 
 <h2>{{ question.question }}</h2>
 
-{% set id = id | int %}
-
 {% set id_index = ids.index(id) + 1 %}
 
 {% set id = ids[id_index] %}
+
+<input hidden name="ids-list" value="{{ ids }}">
 
 <form id="question">
     <input type="radio" id="a1" name="answer" value="a1" required>
@@ -23,6 +23,6 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <button class="quiz-button">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-include="[name='answer']" hx-post="/tests/{{chapter}}/{{id}}" 
+    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id}}" 
     hx-target="#quiz-card" hx-swap="inner-html">Next</button> 
 </div>
