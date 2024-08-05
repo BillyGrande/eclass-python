@@ -7,6 +7,8 @@
 
 <h2>Quiz questions For Chapter {{ chapter }}</h2>
 
+<input hidden name="ids-list" value="{{ ids }}">
+
 <form>
 <p>When you are ready to start the quiz pres the Start button</p>
 </form>
@@ -19,7 +21,8 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <div style="flex:0;width: 20%;"> </div> 
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id}}" hx-target="#quiz-card" hx-swap="inner-html">Start</button> 
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id}}" hx-target="#quiz-card" hx-swap="inner-html" 
+    hx-include="[name='ids-list']">Start</button> 
 </div>
 
 </div>

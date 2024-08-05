@@ -35,7 +35,7 @@
 {% elif id_index == last_index %}
 {% set id_back = ids[id_index_back] %}
 <div class="buttons" style="  display: flex;flex-direction: row">
-    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}"
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}" hx-include="[name='ids-list']"
     hx-target="#quiz-card" hx-swap="inner-html">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
     <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id}}" 
@@ -45,7 +45,7 @@
 {% set id_next = ids[id_index_next] %}
 {% set id_back = ids[id_index_back] %}
 <div class="buttons" style="  display: flex;flex-direction: row">
-    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}" 
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}" hx-include="[name='ids-list']"
     hx-target="#quiz-card" hx-swap="inner-html">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
     <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id_next}}" 

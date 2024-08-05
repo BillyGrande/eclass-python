@@ -37,17 +37,18 @@ def quiz(chapter=None, id=None):
     else:
         if session.get('logged_in'):
             if request.method == 'POST':
-                #print(request.data.decode("utf-8"))
-                #print(type(request.data.decode("utf-8")))
                 session[id] = request.form['answer']
                 ids = request.form['ids-list']
                 ids = _urlencoded_to_list(ids)
             else:
-                ids = ["1","2","3"]
+                ids = request.args.get('ids-list')
+                ids = _urlencoded_to_list(ids)
+                #ids.replace()
+                print(ids)
             statement = select(Question).filter_by(id=int(id))
             question_obj = db_session.scalars(statement).all()
             question = question_obj[0]
-            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=ids, length=len([1,2,3]), id=id)
+            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=ids, length=len(ids), id=id)
         else:
             return render_template('quiz_login.html', chapter=chapter)
 
@@ -104,5 +105,9 @@ def logout():
 
 
 def _urlencoded_to_list(text):
-    text = "%5B'1'%2C%20'2'%2C%20'3'%5D".replace("%5B","").replace("%5D","").replace("%2C%20",",").replace("'","")
+    print("HERE")
+    print(text)
+    text = text.replace("%5B","").replace("%5D","").replace("%2C%20",",").replace("'","")
+    #text = text.replace("[","").replace("]","").replace("%20","")
+    print(text.split(","))
     return text.split(",")
