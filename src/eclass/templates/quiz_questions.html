@@ -2,9 +2,12 @@
 
 <h2>{{ question.question }}</h2>
 
-{% set id_index = ids.index(id) + 1 %}
 
-{% set id = ids[id_index] %}
+{% set length = length | int %}
+{% set last_index = length - 1 %}
+{% set id_index = ids.index(id)  %}
+{% set id_index_next = ids.index(id) + 1 %}
+{% set id_index_back = ids.index(id) - 1 %}
 
 <input hidden name="ids-list" value="{{ ids }}">
 
@@ -20,9 +23,32 @@
     <br>
 </form>
 
+
+{% if id_index == 0 %}
+{% set id_next = ids[id_index_next] %}
 <div class="buttons" style="  display: flex;flex-direction: row">
-    <button class="quiz-button">Back</button>
+    <div style="flex:0;width: 20%;"> </div> 
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id}}" 
+    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id_next}}" 
     hx-target="#quiz-card" hx-swap="inner-html">Next</button> 
 </div>
+{% elif id_index == last_index %}
+{% set id_back = ids[id_index_back] %}
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}"
+    hx-target="#quiz-card" hx-swap="inner-html">Back</button>
+    <div style="flex:1;width: 80%;"> </div>  
+    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id}}" 
+    hx-target="#quiz-card" hx-swap="inner-html">Finish</button> 
+</div>
+{% else %}
+{% set id_next = ids[id_index_next] %}
+{% set id_back = ids[id_index_back] %}
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}" 
+    hx-target="#quiz-card" hx-swap="inner-html">Back</button>
+    <div style="flex:1;width: 80%;"> </div>  
+    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id_next}}" 
+    hx-target="#quiz-card" hx-swap="inner-html">Next</button> 
+</div>
+{% endif %}
