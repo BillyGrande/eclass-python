@@ -33,22 +33,23 @@ def test_welcome():
 @app.route("/tests/<chapter>/<id>", methods=['GET', 'POST'])
 def quiz(chapter=None, id=None):
     if id == None:
+        session['ids'] = ids=["1","2","3"]
         return render_template('quiz_index.html', chapter=chapter, ids=["1","2","3"], length=len([1,2,3]), id=["1","2","3"][0])
     else:
+        answer = None
         if session.get('logged_in'):
             if request.method == 'POST':
-                session[id] = request.form['answer']
-                ids = request.form['ids-list']
-                ids = _urlencoded_to_list(ids)
+                answer_id = request.form['answer_id']
+                session[answer_id] = request.form['answer']
+                ids = session.get('ids')
             else:
-                ids = request.args.get('ids-list')
-                ids = _urlencoded_to_list(ids)
-                #ids.replace()
-                print(ids)
+                ids = session.get('ids')
+                if request.args.get('back', default="No", type=str) == "Yes":
+                    answer = session.get(id)
             statement = select(Question).filter_by(id=int(id))
             question_obj = db_session.scalars(statement).all()
             question = question_obj[0]
-            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=ids, length=len(ids), id=id)
+            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=ids, length=len(ids), id=id, answer=answer)
         else:
             return render_template('quiz_login.html', chapter=chapter)
 
@@ -105,7 +106,7 @@ def logout():
 
 
 def _urlencoded_to_list(text):
-    print("HERE")
+    print("URLENCODED")
     print(text)
     text = text.replace("%5B","").replace("%5D","").replace("%2C%20",",").replace("'","")
     #text = text.replace("[","").replace("]","").replace("%20","")

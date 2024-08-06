@@ -9,16 +9,32 @@
 {% set id_index_next = ids.index(id) + 1 %}
 {% set id_index_back = ids.index(id) - 1 %}
 
-<input hidden name="ids-list" value="{{ ids }}">
+<input hidden name="answer_id" value="{{ id }}">
 
 <form id="question">
+    {% if answer == "a1" %}
+    <input type="radio" id="a1" name="answer" value="a1" required checked>
+    {% else %}
     <input type="radio" id="a1" name="answer" value="a1" required>
+    {% endif %}
     <label for="a1">{{question.a1}}</label><br>
+    {% if answer == "a2" %}
+    <input type="radio" id="a2" name="answer" value="a2" required checked>
+    {% else %}
     <input type="radio" id="a2" name="answer" value="a2" required>
+    {% endif %}
     <label for="a2">{{question.a2}}</label><br>  
+    {% if answer == "a3" %}
+    <input type="radio" id="a3" name="answer" value="a3" required checked>
+    {% else %}
     <input type="radio" id="a3" name="answer" value="a3" required>
+    {% endif %}
     <label for="a3">{{question.a3}}</label><br>
+    {% if answer == "a4" %}
+    <input type="radio" id="a4" name="answer" value="a4" required checked>
+    {% else %}
     <input type="radio" id="a4" name="answer" value="a4" required>
+    {% endif %}
     <label for="a4">{{question.a4}}</label><br>
     <br>
 </form>
@@ -29,26 +45,26 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <div style="flex:0;width: 20%;"> </div> 
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id_next}}" 
+    <button class="quiz-button" hx-include="[name='answer'],[name='answer_id']" hx-post="/tests/{{chapter}}/{{id_next}}" 
     hx-target="#quiz-card" hx-swap="inner-html">Next</button> 
 </div>
 {% elif id_index == last_index %}
 {% set id_back = ids[id_index_back] %}
 <div class="buttons" style="  display: flex;flex-direction: row">
-    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}" hx-include="[name='ids-list']"
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}?back=Yes" 
     hx-target="#quiz-card" hx-swap="inner-html">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id}}" 
+    <button class="quiz-button" hx-include="[name='answer'],[name='answer_id']" hx-post="/tests/{{chapter}}/{{id}}" 
     hx-target="#quiz-card" hx-swap="inner-html">Finish</button> 
 </div>
 {% else %}
 {% set id_next = ids[id_index_next] %}
 {% set id_back = ids[id_index_back] %}
 <div class="buttons" style="  display: flex;flex-direction: row">
-    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}" hx-include="[name='ids-list']"
+    <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}?back=Yes"
     hx-target="#quiz-card" hx-swap="inner-html">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-include="[name='answer'],[name='ids-list']" hx-post="/tests/{{chapter}}/{{id_next}}" 
+    <button class="quiz-button" hx-include="[name='answer'],[name='answer_id']" hx-post="/tests/{{chapter}}/{{id_next}}" 
     hx-target="#quiz-card" hx-swap="inner-html">Next</button> 
 </div>
 {% endif %}
