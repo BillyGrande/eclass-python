@@ -1,11 +1,12 @@
-<h1>Question {{ length }}</h1>
+{% set id_index = ids.index(id)  %}
+
+<h1>Question {{ id_index + 1 }}/{{ length }}</h1>
 
 <h2>{{ question.question }}</h2>
 
 
 {% set length = length | int %}
 {% set last_index = length - 1 %}
-{% set id_index = ids.index(id)  %}
 {% set id_index_next = ids.index(id) + 1 %}
 {% set id_index_back = ids.index(id) - 1 %}
 

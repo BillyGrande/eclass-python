@@ -42,9 +42,11 @@ def quiz(chapter=None, id=None):
                 answer_id = request.form['answer_id']
                 session[answer_id] = request.form['answer']
                 ids = session.get('ids')
+                if session.get(id, default=False):
+                    answer = session.get(id)
             else:
                 ids = session.get('ids')
-                if request.args.get('back', default="No", type=str) == "Yes":
+                if request.args.get('back', default=False):
                     answer = session.get(id)
             statement = select(Question).filter_by(id=int(id))
             question_obj = db_session.scalars(statement).all()
