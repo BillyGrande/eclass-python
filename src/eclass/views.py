@@ -67,21 +67,11 @@ def quiz_retrieve_questions(chapter=0):
 
 
 
-@app.route("/tests/<chapter>/<id>/next", methods=['GET', 'POST'])
-def quiz_next(chapter=None, id=None):
-    if request.method == 'POST':
-        print(request.form['answer'])
-        session[id] = request.form['answer']
-        try:
-            question_id= session.get('questions')[0]
-            session['questions'] = session.get('questions').pop(0)
-            next_id = session.get('questions').pop(0)
-        except TypeError:
-            question_id = session.get('questions')
-        statement = select(Question).filter_by(id=question_id)
-        question_obj = db_session.scalars(statement).all()
-        question = question_obj
-        return render_template('quiz_questions.html', question=question , next_id=next_id)
+@app.route("/tests/<chapter>/<id>/finish", methods=['POST'])
+def quiz_finish(chapter=None, id=None):
+        ids = session.get('ids')
+        #same ip in finished
+        return render_template('quiz_finish.html') #question=question , next_id=next_id)
 
 
 
