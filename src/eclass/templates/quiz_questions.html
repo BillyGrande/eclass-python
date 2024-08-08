@@ -55,7 +55,7 @@
     <button class="quiz-button" hx-get="/tests/{{chapter}}/{{id_back}}?back=Yes" 
     hx-target="#quiz-card" hx-swap="inner-html">Back</button>
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-include="[name='answer'],[name='answer_id']" hx-post="/tests/{{chapter}}/{{id}}" 
+    <button class="quiz-button" hx-include="[name='answer'],[name='answer_id']" hx-post="/tests/{{chapter}}/{{id}}/finish" 
     hx-target="#quiz-card" hx-swap="inner-html">Finish</button> 
 </div>
 {% else %}

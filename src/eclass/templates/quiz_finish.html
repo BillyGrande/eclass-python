@@ -1,0 +1,20 @@
+<h2>Results For Chapter {{ chapter }}</h2>
+
+<input hidden name="ids-list" value="{{ ids }}">
+
+
+<div class="pie animate" style="--p:90;--c:lightgreen"> 90%</div>
+
+<br>
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <div style="flex:0;width: 20%;"> </div> 
+    <div style="flex:1;width: 80%;"> </div>  
+</div>
+
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <div style="flex:0;width: 20%;"> </div> 
+    <div style="flex:1;width: 80%;"> </div>  
+    <button class="quiz-button" hx-get="/tests/{{chapter}}" hx-target="#quiz-card" hx-swap="inner-html" >Home</button> 
+</div>
+
+</div>

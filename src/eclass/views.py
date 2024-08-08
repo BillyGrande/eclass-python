@@ -55,25 +55,23 @@ def quiz(chapter=None, id=None):
         else:
             return render_template('quiz_login.html', chapter=chapter)
 
-#@app.route("/tests/<chapter>/retrieve")
-def quiz_retrieve_questions(chapter=0):
-    statement = select(Question).filter_by(chapter=chapter)
-    ids = []
-    for item in db_session.scalars(statement).all():
-        ids.append(item.id)
-
-    return ids
-
-
-
 
 @app.route("/tests/<chapter>/<id>/finish", methods=['POST'])
 def quiz_finish(chapter=None, id=None):
         ids = session.get('ids')
-        #same ip in finished
+        session[id] = request.form['answer']
+        for i in ids:
+            print(session.get(i))
+            statement = select(Question).filter_by(id=int(id))
+            question_obj = db_session.scalars(statement).first()
+            print(question_obj.question)
+            if question_obj.correct == session[id]:
+                print(True)
+            else:
+                print(False)
+            print(type(question_obj))
+        #same id in finished
         return render_template('quiz_finish.html') #question=question , next_id=next_id)
-
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -81,13 +79,11 @@ def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
         session['logged_in'] = True
-        print(request.args.get('previous', default=False))
-        print(request.args.get('chapter', default=False))
         if request.args.get('previous', default=False):
             if request.args.get('previous', default=False) == "quiz":
                 chapter = request.args.get('chapter', default=False)
                 return redirect(url_for('quiz', chapter=chapter))
-        return redirect(url_for('welcome'))
+        return redirect(url_for('welcome', chapter=chapter))
     return '''
         <form method="post">
             <p><input type=text name=username>
