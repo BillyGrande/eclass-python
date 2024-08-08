@@ -8,5 +8,5 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <button class="quiz-button" onclick="location.href = '/tests/{{ chapter }}';" >Back</button>
     <div style="flex:1;width: 80%;"> </div> 
-    <button onclick="location.href = '/login';" class="quiz-button">Login</button> 
+    <button onclick="location.href = '/login?previous=quiz&chapter={{ chapter }}';" class="quiz-button">Login</button> 
 </div>

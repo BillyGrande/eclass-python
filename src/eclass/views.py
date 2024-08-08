@@ -81,6 +81,12 @@ def login():
     if request.method == 'POST':
         session['username'] = request.form['username']
         session['logged_in'] = True
+        print(request.args.get('previous', default=False))
+        print(request.args.get('chapter', default=False))
+        if request.args.get('previous', default=False):
+            if request.args.get('previous', default=False) == "quiz":
+                chapter = request.args.get('chapter', default=False)
+                return redirect(url_for('quiz', chapter=chapter))
         return redirect(url_for('welcome'))
     return '''
         <form method="post">
