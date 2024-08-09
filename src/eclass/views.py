@@ -60,18 +60,25 @@ def quiz(chapter=None, id=None):
 def quiz_finish(chapter=None, id=None):
         ids = session.get('ids')
         session[id] = request.form['answer']
+        results = []
         for i in ids:
-            print(session.get(i))
-            statement = select(Question).filter_by(id=int(id))
+            statement = select(Question).filter_by(id=int(i))
             question_obj = db_session.scalars(statement).first()
+            given_answer = session.get(i)
+            correct_answer = question_obj.correct 
             print(question_obj.question)
-            if question_obj.correct == session[id]:
-                print(True)
-            else:
-                print(False)
-            print(type(question_obj))
+            print(f"User gave: {given_answer}, correct answer is {correct_answer}")
+            result = correct_answer == given_answer
+            results.append([question_obj.question, getattr(question_obj, correct_answer), getattr(question_obj, given_answer), result])
+        print(results)
+        print()
+                
         #same id in finished
-        return render_template('quiz_finish.html') #question=question , next_id=next_id)
+        return render_template('quiz_finish.html', chapter=chapter) #question=question , next_id=next_id)
+
+@app.route("/tests/static/finish")
+def static_quiz_finish(chapter=None, id=None):
+    return render_template('quiz_finish_static.html', chapter=0)
 
 
 @app.route('/login', methods=['GET', 'POST'])

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div id="quiz-card">
+    <h2>Results For Chapter {{ chapter }}</h2>
+
+    <input hidden name="ids-list" value="{{ ids }}">
+    
+    
+    <div class="pie animate" style="--p:90;--c:lightgreen"> 90%</div>
+    
+    <div class="question"><h3>When python was invented?<span id="checkmark"></span></h3></div>
+    <div class="answer">Correct answer: Late 1982</div>
+    <div class="answer">You chose:  2000s</div>
+    
+    <br>
+    <div class="question"><h3>When python was invented?<span id="checkmark"></span></h3></div>
+    <div class="answer">Correct answer: Late 1982</div>
+    <div class="answer-correct"><span>You chose: </span>Late 1982</div>
+    
+    <br>
+    <div class="question"><h3>When python was invented?<span id="wrongmark"></span></h3></div>
+    <div class="answer correct-answer">Correct answer: Late 1982</div>
+    <div class="answer answer-wrong"><span>You chose: </span>2000s</div>
+    
+    <br>
+    <div class="buttons" style="  display: flex;flex-direction: row">
+        <div style="flex:0;width: 20%;"> </div> 
+        <div style="flex:1;width: 80%;"> </div>  
+    </div>
+    
+    <div class="buttons" style="  display: flex;flex-direction: row">
+        <div style="flex:0;width: 20%;"> </div> 
+        <div style="flex:1;width: 80%;"> </div>  
+        <button class="quiz-button" hx-get="/tests/{{chapter}}" hx-target="#quiz-card" hx-swap="inner-html" >Home</button> 
+    </div>
+    
+    </div>
+
+</div>
+
+
+
+{% endblock content %}

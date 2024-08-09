@@ -249,6 +249,84 @@ button.quiz-button[disabled] {
   float: right;
 }
 
+.answer-correct > span {
+  color: #397300;
+}
+
+.answer-wrong > span {
+  color:#800;
+}
+
+#checkmark {
+  display:inline-block;
+  margin-left: 10px;
+  padding-top: 2px;
+  width: 22px;
+  height:22px;
+  background:#397300;
+  border-radius:50%;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+#checkmark:before{
+  content:"";
+  position: absolute;
+  width:3px;
+  height:9px;
+  background-color:#fff;
+  left:11px;
+  top:6px;
+}
+
+#checkmark:after{
+  content:"";
+  position: absolute;
+  width:3px;
+  height:3px;
+  background-color:#fff;
+  left:8px;
+  top:12px;
+}
+
+
+#wrongmark {
+  display:inline-block;
+  margin-left: 10px;
+  padding-top: 2px;
+  width: 22px;
+  height:22px;
+  background:#800;
+  border-radius:50%;
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+#wrongmark:before{
+  content:"";
+  position: absolute;
+  width:3px;
+  height:12px;
+  background-color:#fff;
+  left:10px;
+  top:5px;
+}
+
+#wrongmark:after{
+  content:"";
+  position: absolute;
+  width:3px;
+  height:12px;
+  background-color:#fff;
+  right:9px;
+  top:5px;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
 @property --p{
   syntax: '<number>';
   inherits: true;
