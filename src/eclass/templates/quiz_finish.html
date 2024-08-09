@@ -1,25 +1,22 @@
 <h2>Results For Chapter {{ chapter }}</h2>
 
-<input hidden name="ids-list" value="{{ ids }}">
+<div class="pie animate" style="--p:{{percentage}}--c:lightgreen"> {{percentage}}%</div>
 
 
-<div class="pie animate" style="--p:90;--c:lightgreen"> 90%</div>
-
-<div class="question"><h3>When python was invented?</h3></div>
-<div class="answer">Correct answer: a2) Late 1982</div>
-<div class="answer">You chose: a3) 2000s</div>
-
+{% for r in results %}
+{% if r[3] %}
+<div class="question"><h3>{{r[4]}}. {{ r[0] }}<span id="checkmark"></span></h3></div>
+<div class="answer">Correct answer: {{ r[1] }}</div>
+<div class="answer-correct"><span>You chose: </span>{{ r[2] }}</div>
 <br>
-<div class="question"><h3>When python was invented?</h3></div>
-<div class="answer">Correct answer: a2) Late 1982</div>
-<div class="answer-correct">You chose: a3) 2000s</div>
-
+{% else %}
+<div class="question"><h3>{{r[4]}}. {{ r[0] }}<span id="wrongmark"></span></h3></div>
+<div class="answer">Correct answer: {{ r[1] }}</div>
+<div class="answer-wrong"><span>You chose: </span>{{ r[2] }}</div>
 <br>
-<div class="question"><h3>When python was invented?</h3></div>
-<div class="answer correct-answer">Correct answer: a2) Late 1982</div>
-<div class="answer wrong-answer">You chose: a3) 2000s</div>
+{% endif %}
+{% endfor %}
 
-<br>
 <div class="buttons" style="  display: flex;flex-direction: row">
     <div style="flex:0;width: 20%;"> </div> 
     <div style="flex:1;width: 80%;"> </div>  
@@ -28,7 +25,7 @@
 <div class="buttons" style="  display: flex;flex-direction: row">
     <div style="flex:0;width: 20%;"> </div> 
     <div style="flex:1;width: 80%;"> </div>  
-    <button class="quiz-button" hx-get="/tests/{{chapter}}" hx-target="#quiz-card" hx-swap="inner-html" >Home</button> 
+    <button class="quiz-button" hx-get="/lessons/{{chapter}}" hx-target="#quiz-card" hx-swap="inner-html" >Home</button> 
 </div>
 
 </div>

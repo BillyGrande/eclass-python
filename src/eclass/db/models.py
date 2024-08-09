@@ -37,6 +37,3 @@ class Question(Base):
 
     def __repr__(self):
         return f'<Question {self.question!r}'
-    
-    def get_answer_text(answer):
-        return 1
