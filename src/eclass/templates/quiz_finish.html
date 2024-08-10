@@ -1,7 +1,26 @@
 <h2>Results For Chapter {{ chapter }}</h2>
 
-<div class="pie animate" style="--p:{{percentage}}--c:lightgreen"> {{percentage}}%</div>
 
+{% if (percentage >= 0)  and (percentage <= 20) %}
+<div class="pie animate no-round" style="--p: {{percentage}}"> {{percentage}} </div>
+{% endif %}
+
+{% if (percentage >= 21)  and (percentage <= 40) %}
+<div class="pie animate no-round" style="--p: {{percentage}};--c:darkblue"> {{percentage}} </div>
+{% endif %}
+
+{% if (percentage >= 41)  and (percentage <= 60) %}
+<div class="pie animate no-round" style="--p: {{percentage}};--c:purple">{{percentage}} </div>
+{% endif %}
+
+{% if (percentage >= 61)  and (percentage <= 80) %}
+<div class="pie animate no-round" style="--p: {{percentage}};--c:orange"> {{percentage}} </div>
+{% endif %}
+
+{% if (percentage >= 81)  and (percentage <= 100) %}
+<div class="pie animate no-round" style="--p: {{percentage}};--c:lightgreen"> {{percentage}}</div>
+{% endif %}
+<div> 2 / 3 right answers </div>
 
 {% for r in results %}
 {% if r[3] %}
@@ -17,7 +36,7 @@
 {% endif %}
 {% endfor %}
 
-<div class="buttons" style="  display: flex;flex-direction: row">
+<div class="buttons" style="display: flex;flex-direction: row">
     <div style="flex:0;width: 20%;"> </div> 
     <div style="flex:1;width: 80%;"> </div>  
 </div>

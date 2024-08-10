@@ -81,7 +81,7 @@ def quiz_finish(chapter=None, id=None):
             percentage = 0
         else:
             percentage = 100 * correct_n / n 
-        return render_template('quiz_finish.html', chapter=chapter, results=results, percentage=percentage) #question=question , next_id=next_id)
+        return render_template('quiz_finish.html', chapter=chapter, results=results, percentage=int(percentage)) #question=question , next_id=next_id)
 
 @app.route("/tests/static/finish")
 def static_quiz_finish(chapter=None, id=None):
