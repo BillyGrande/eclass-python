@@ -55,6 +55,7 @@ def quiz(chapter=None, id=None):
         else:
             return render_template('quiz_login.html', chapter=chapter)
 
+# ["1","2","3"].join("|").split("|")
 
 @app.route("/tests/<chapter>/<id>/finish", methods=['POST'])
 def quiz_finish(chapter=None, id=None):
