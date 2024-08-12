@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div id="profile">
+    <div class="avatar" style="display: flex; flex-direction: row;">
+        <img src="{{ url_for('static',filename='avatar.svg') }}" alt="profile_image" width="80" height="80"> <h1> {{ username }} </h1>
+    </div>
+    <h2> Results </h2>
+    <h3> Chapter 0 </h3>
+    <div> Total attempts: {{ attempts[0] }}</div>
+    <div> Average Score is: {{ average[0] }}</div>
+    <div> Best Score is: {{ scores[0] }}</div>
+    <h3> Chapter 1 </h3>
+    <div> Total attempts: {{ attempts[1] }}</div>
+    <div> Average Score is: {{ average[1] }}</div>
+    <div> Best Score is: {{ scores[1] }}</div>
+</div>
+
+<div class="buttons" style="  display: flex;flex-direction: row">
+    <div style="flex:1;width: 80%;"> </div>  
+    <button onclick="location.href = '/logout';" class="logout-button">Logout</button> 
+</div>
+
+{% endblock content %}

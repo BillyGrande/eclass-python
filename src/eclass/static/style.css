@@ -245,6 +245,23 @@ button.quiz-button[disabled] {
   display: none;
 }
 
+button.logout-button {
+  font-size: 1rem;
+  color: black;
+  border: 2px solid red; 
+  transition-duration: 0.4s;
+  width: 10%;
+}
+
+button.logout-button:hover {
+  background-color: red; 
+  color: white;
+}
+
+button.logout-button[disabled] {
+  display: none;
+}
+
 .right-buttons {
   float: right;
 }

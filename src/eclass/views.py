@@ -3,6 +3,7 @@ from flask import render_template, session, request,redirect,url_for
 from eclass.db.db import db_session
 from eclass.db.models import Question, Result
 from sqlalchemy import select
+from sqlalchemy.sql import func
 from flask import session
 import os
 
@@ -51,7 +52,8 @@ def quiz(chapter=None, id=None):
             statement = select(Question).filter_by(id=int(id))
             question_obj = db_session.scalars(statement).all()
             question = question_obj[0]
-            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=ids, length=len(ids), id=id, answer=answer)
+            return render_template('quiz_questions.html', question=question, chapter=chapter, ids=ids, 
+            length=len(ids), id=id, answer=answer)
         else:
             return render_template('quiz_login.html', chapter=chapter)
 
@@ -79,7 +81,8 @@ def quiz_finish(chapter=None, id=None):
                 correct_ids.append(i)
             else:
                 result = False
-            results.append([question_obj.question, getattr(question_obj, correct_answer), getattr(question_obj, given_answer), result, n])
+            results.append([question_obj.question, getattr(question_obj, correct_answer), 
+            getattr(question_obj, given_answer), result, n])
         if correct_n == 0:
             percentage = 0
         else:
@@ -88,11 +91,38 @@ def quiz_finish(chapter=None, id=None):
                         answers_right=n,ids="|".join(ids),ids_correct="|".join(correct_ids))
         db_session.add(r)
         db_session.commit()
-        return render_template('quiz_finish.html', chapter=chapter, results=results, percentage=int(percentage)) #question=question , next_id=next_id)
+        for id in ids:
+            session.pop(id, None)
+        return render_template('quiz_finish.html', chapter=chapter, results=results, percentage=int(percentage)) 
 
 @app.route("/tests/static/finish")
 def static_quiz_finish(chapter=None, id=None):
     return render_template('quiz_finish_static.html', chapter=0)
+
+
+@app.route('/profile')
+def profile(username=None):
+    if session.get('logged_in'):
+        username = username=session.get('username')
+        chapters = [0, 1]
+        scores = {}
+        average = {}
+        attempts = {}
+        for chapter in chapters:
+            #best_score_query = db_session.query(func.max(Result.score)).filter_by(chapter=chapter,username=username)
+            best_score_query = select(func.max(Result.score)).filter_by(chapter=chapter,username=username)
+            total_attempts_query = select(func.count(Result.score)).filter_by(chapter=chapter,username=username)
+            sum_score_qurey = select(func.sum(Result.score)).filter_by(chapter=chapter,username=username)
+            best_score = db_session.scalars(best_score_query).one()
+            total_attempts = db_session.scalars(total_attempts_query).one()
+            average_score = db_session.scalar(sum_score_qurey)
+            scores[chapter] = best_score if best_score != None else 0
+            attempts[chapter] = total_attempts
+            average[chapter] = int(average_score / total_attempts) if total_attempts > 0 else 0
+        print(scores)
+        return render_template('profile.html', username=username, scores=scores, attempts=attempts, average=average)
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -104,13 +134,16 @@ def login():
             if request.args.get('previous', default=False) == "quiz":
                 chapter = request.args.get('chapter', default=False)
                 return redirect(url_for('quiz', chapter=chapter))
-        return redirect(url_for('welcome', chapter=chapter))
-    return '''
-        <form method="post">
-            <p><input type=text name=username>
-            <p><input type=submit value=Login>
-        </form>
-        '''
+        return redirect(url_for('welcome'))
+    if session.get('logged_in'):
+        return redirect(url_for('profile'))
+    else:
+        return '''
+            <form method="post">
+                <p><input type=text name=username>
+                <p><input type=submit value=Login>
+            </form>
+            '''
 
 @app.route('/logout')
 def logout():
