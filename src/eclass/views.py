@@ -1,7 +1,7 @@
 from eclass import app
 from flask import render_template, session, request,redirect,url_for
 from eclass.db.db import db_session
-from eclass.db.models import Question
+from eclass.db.models import Question, Result
 from sqlalchemy import select
 from flask import session
 import os
@@ -64,6 +64,7 @@ def quiz_finish(chapter=None, id=None):
         results = []
         n = 0
         correct_n = 0
+        correct_ids = []
         for i in ids:
             n = n + 1
             statement = select(Question).filter_by(id=int(i))
@@ -75,13 +76,18 @@ def quiz_finish(chapter=None, id=None):
             if correct_answer == given_answer:
                 result = True
                 correct_n = correct_n + 1
+                correct_ids.append(i)
             else:
                 result = False
             results.append([question_obj.question, getattr(question_obj, correct_answer), getattr(question_obj, given_answer), result, n])
         if correct_n == 0:
             percentage = 0
         else:
-            percentage = 100 * correct_n / n 
+            percentage = 100 * correct_n / n
+        r = Result(username=session.get('username'),chapter=chapter,score=percentage,answers_total=n,
+                        answers_right=n,ids="|".join(ids),ids_correct="|".join(correct_ids))
+        db_session.add(r)
+        db_session.commit()
         return render_template('quiz_finish.html', chapter=chapter, results=results, percentage=int(percentage)) #question=question , next_id=next_id)
 
 @app.route("/tests/static/finish")

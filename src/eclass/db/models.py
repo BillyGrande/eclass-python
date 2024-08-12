@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.sql import func
 from eclass.db.db import Base
 
 class User(Base):
@@ -37,3 +38,29 @@ class Question(Base):
 
     def __repr__(self):
         return f'<Question {self.question!r}'
+    
+class Result(Base):
+    __tablename__ = 'results'
+    id = Column(Integer,primary_key=True)
+    username = Column(String(150),unique=False)
+    chapter = Column(Integer,unique=False)
+    score = Column(Integer,unique=False)
+    answers_total = Column(Integer,unique=False)
+    answers_right = Column(Integer,unique=False)
+    ids = Column(String(150), unique=False, nullable=True)
+    ids_correct = Column(String(150), unique=False, nullable=True)
+    date = Column(DateTime(timezone=True), server_default=func.now())
+
+
+
+    def __init__(self, username=None, chapter=None, score=None, answers_total=None, answers_right=None, ids=None, ids_correct=None):
+        self.username = username
+        self.chapter = chapter
+        self.score = score
+        self.answers_total = answers_total
+        self.answers_right = answers_right
+        self.ids = ids
+        self.ids_correct = ids_correct
+
+    def __repr__(self):
+        return f'<Result {self.result!r}'
