@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+
+<section id="Welcome">
+    <h1 class="section-heading">
+        Welcome
+    </h1>
+    <p>Welcome to Python Eclass. The purpose of this Eclass is be proficient with using Python.</p>
+</section>
+
+<section id="What-is-python">
+    <h1 class="section-heading">
+        What is python
+    </h1>
+    <p>Python is dynamically typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly procedural), object-oriented and functional programming. It is often described as a "batteries included" language due to its comprehensive standard library.</p>
+</section>
+
+<section id="Python-history">
+    <h1 class="section-heading">
+        Python history
+    </h1>
+    <p>Python first released in 1991 and it was designed by Guido van Rossum.</p>
+</section>
+
+<section id="Dynamic-typing">
+    <h1 class="section-heading">
+        Dynamic typing
+    </h1>
+    <p>Dynamic type is a type system where the program doesn't need to have explicit type for variables.
+
+        For example in a statically typed language if you want to initialize an integer variable you would type something as
+        <pre><code class="language-python">
+int my_variable = 0
+        </code></pre>
+        but in a dynamically typed language, like python, you can omit the type and write it as this
+        <pre><code class="language-python">
+my_variable = 0
+        </code></pre>
+        A lot of programmers prefer statically typed languages because they are easier to debug but dynamically typed languages are faster to write
+        </p>
+</section>
+
+<section id="Basic-syntax">
+    <h1 class="section-heading">
+        Basic Syntax
+    </h1>
+    <p> The purpose of this section is just a quick heads-up about basic python syntax. We will dive deeper for each topic in later chapters.
+        <section id="Variables">
+            <h2 class="section-heading">
+                Variables
+            </h2>
+            <p>To initialize a variable just use an alphanumeric sequence and = operator. Variables cant start with number.
+                <pre><code class="language-python">
+my_variable = 0
+v4ri4ble = "Test"
+                </code></pre>
+            </p>
+            <p>You can change the value of a variable with = operator again.
+                <pre><code class="language-python">
+variable_0 = 0
+print(variable_0)
+#Output: 0
+
+variable_0 = 1
+print(variable_0)
+#Output: 1
+                </code></pre>
+            </p>
+            <section id="Print">
+                <h2 class="section-heading">
+                    Print
+                </h2>
+                <p>You can print in output using the ~print()~ function.
+                    <pre><code class="language-python">
+print("This is a message")
+#Output: This is a message
+
+number = 5
+print(number)
+#Output: 5
+
+print("The value is ", number)
+#Output: The value is 5
+                    </code></pre>
+                </p>
+        </section>
+    </p>
+</section>
+
+
+{% endblock content %}
