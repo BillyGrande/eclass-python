@@ -26,13 +26,13 @@ def hello(message=None):
 def welcome():
     return render_template('lessons_welcome.html')
 
-@app.route("/lessons/0")
-def welcome_0():
-    return render_template('lessons_0.html')
-
 @app.route("/tests/welcome")
 def test_welcome():
     return render_template('tests_welcome.html')
+
+@app.route("/lessons/<chapter>/<section>")
+def lessons(chapter=None,section=None):
+    return render_template(f'lessons_{chapter}_{section}.html')
 
 @app.route("/tests/<chapter>")
 @app.route("/tests/<chapter>/<id>", methods=['GET', 'POST'])

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+
+<section id="Sequences">
+    <h1 class="section-heading">
+Sequences
+    </h1>
+    <p>
+        In Python, sequence is the generic term for an ordered set.
+        There are several types of sequences in Python, such as Lists, tuples and strings that we learned in previous chapter.
+    </p>
+</section>
+
+<section id="Lists">
+    <h2 class="section-heading">
+        List
+    </h2>
+    <p>
+        In Python, a list is a collection of items that are ordered and changeable.
+        Lists allow duplicate members and can hold items of different data types.
+        Lists are one of the most versatile and commonly used data types in Python.
+    </p>
+
+    <p>
+        Lists are defined by enclosing elements in square brackets `[]`.
+        They support various operations such as indexing, slicing, appending, and removing elements.
+        <pre><code class="language-python">
+# Creating a list
+my_list = [1, 2, 3, 'a', 'b', 'c']
+
+first_item = my_list[0] # 1
+last_item = my_list[-1] # 'c'
+        </code></pre>
+    </p>
+
+    <p>Lists have various method, that will cover in a later chapter, but two basic methods are append and pop.
+    With append we add items at the end of the list and with pop we remove the last item.
+        <pre>
+            <code class="language-python">
+my list = [] # an empty
+
+my_list.append(1) # list will be [1]
+my_list.append(2) # list will be [1,2]
+
+my_list.pop() # list will be [1]
+            </code>
+        </pre>
+    </p>
+
+    <p>Also a useful function lists it the function len(). With len() we get current length of a list
+        <pre>
+            <code class="language-python">
+my_list = [1,2,3]
+
+x = len(my_list)
+
+print(x) # X will be 3
+            </code>
+        </pre>
+    </p>
+</section>
+
+
+{% endblock content %}

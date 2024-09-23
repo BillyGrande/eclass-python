@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+
+<section id="Text">
+    <h1 class="section-heading">
+Text
+    </h1>
+    <p>For having text in python we use string and char data types.
+    </p>
+</section>
+
+<section id="String">
+    <h2 class="section-heading">
+        String
+    </h2>
+    <p>
+        In Python, a string is a sequence of characters enclosed within single quotes,
+        double quotes, or triple quotes. Strings are immutable, meaning once they are created, their contents cannot be changed
+    </p>
+    <p>
+        Strings can include letters, numbers, symbols, and even spaces.
+        They are often used to represent text and are one of the most commonly used data types in Python.
+    <pre> <code class="language-python">
+#Single quotes
+single_quote_string = 'Hello, World!'
+
+#Double quotes
+double_quite_string = "Hello, World?"
+
+#Triple quotes (can spn mutliple lines)
+triple_quote_strings = '''
+Hello,
+World
+'''
+    </code>
+    </pre>
+    </p>
+   <p>As you can see, triple quote strings can span multiple lines</p>
+</section>
+
+<section id="Character">
+    <h2 class="section-heading">
+        Character
+    </h2>
+    <p>
+        Character or char type is a string of length one.
+        <pre><code class="language-python">
+# Single character
+char_a = "a"
+char_b = 'b'
+        </code></pre>
+
+    </p>
+
+    <p>Also a character can be accessed individually from a string using indexing
+        <pre>
+            <code class="language-python">
+#A string
+a_string = "Python"
+
+first_char = string[0] #this will be 'P'
+last_cahr = string[-1] #this will be 'n'
+            </code>
+        </pre></p>
+</section>
+
+{% endblock content %}

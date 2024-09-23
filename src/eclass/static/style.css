@@ -59,9 +59,9 @@ main {
     position: absolute;
     margin: 0 auto;
     width: calc(100% - var(--sidebarMinWidth));
-    left: 25%;
+    left: 20%;
     right: 500px;
-    max-width: 950px;
+    max-width: 1100px;
     min-height: 100%;
   }
 
