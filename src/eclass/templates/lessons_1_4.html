@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+
+<section id="Other-types">
+    <h1 class="section-heading">
+Other types
+    </h1>
+    <p>
+        Some types we missed, but are useful for our adveture are:
+        <ul>
+            <li>Boolean</li>
+            <li>None</li>
+            <li>Byte</li>
+        </ul>
+    </p>
+</section>
+
+
+<section id="Boolean">
+    <h2 class="section-heading">
+        Boolean
+    </h2>
+    <p>
+        Boolean or bool is the True of False values. The comparison of two values will be a boolean result.
+        Boolean type always start with a capitilized letter.
+        <pre><code class="language-python">
+x = True
+x = 1 > 0 # Will be True
+
+y = False
+y = 1 > 2 # Will be False
+        </code></pre>
+    </p>
+
+</section>
+
+<section id="None">
+    <h2 class="section-heading">
+        None
+    </h2>
+    <p>
+        None is when we have an empty/null value. None starts with a capital N.
+        <pre><code class="language-python">
+x = None
+        </code></pre>
+    </p>
+</section>
+
+<section id="Byte">
+    <h2 class="section-heading">
+        Byte
+    </h2>
+    <p>
+        You can create Bytes usin the byte() function or b prefix. Bytes are useful for specific occasions that we will not cover here.
+        <pre><code class="language-python">
+data_bytes = b"Hello, Bytes!"
+        </code></pre>
+
+    </p>
+</section>
+
+
+{% endblock content %}

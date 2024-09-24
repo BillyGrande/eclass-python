@@ -55,12 +55,12 @@ last_item = my_list[-1] # 'c'
     With append we add items at the end of the list and with pop we remove the last item.
         <pre>
             <code class="language-python">
-my list = [] # an empty
+my list = [] # An empty List
 
-my_list.append(1) # list will be [1]
-my_list.append(2) # list will be [1,2]
+my_list.append(1) # List will be [1]
+my_list.append(2) # List will be [1,2]
 
-my_list.pop() # list will be [1]
+my_list.pop() # List will be [1]
             </code>
         </pre>
     </p>
@@ -78,5 +78,54 @@ print(x) # X will be 3
     </p>
 </section>
 
+
+<section id="Tuple">
+    <h2 class="section-heading">
+Tuple
+    </h2>
+    <p>
+        In Python tuples are likes lists but immutable. That means, that once a tuple is created, it cannot be modified.
+        To create a tuple we use parentheses '()'
+        <pre><code class="language-python">
+empty_tuple = ()
+
+numbers_tuple = (1,2,3)
+
+mixed_tuple = (1,"two",3)
+
+x = mixed_tuple[0] # X will be 1
+        </code></pre>
+    </p>
+</section>
+
+<section id="Range">
+    <h2 class="section-heading">
+Range
+    </h2>
+
+    <p>
+        Range is not considered a sequence, it is a function. But the result of range is an immutable sequence of numbers.
+    </p>
+
+    <p>
+        Range sytnax is like this: range(start, stop, step).
+    </p>
+    <p>
+        Where start is the first number of the sequence and stop the upper limit of sequence.
+        Step is the incrementation from start till stop.
+        The default value for start is 0 and for step 1. Stop has not a default value.
+        <pre><code class="language-python">
+# Both ranges are the same
+# (0,1,2,3,4,5)
+x = range(0,6,1)
+x = range(6) # We skip start and step
+
+# (2,4,6,8)
+y = range(2, 10, 2)
+
+        </code></pre>
+
+    </p>
+</section>
 
 {% endblock content %}

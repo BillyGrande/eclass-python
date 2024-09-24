@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+
+<section id="Variables">
+    <h1 class="section-heading">
+        Variables
+    </h1>
+    <p>
+        There is no specific command to declare a variable in Python.
+        You only need the name of the variable, the '=' sign and the value of the variable.
+        The name of the variable cannot start with a number.
+        <pre><code class="language-python">
+x = 10
+name = "Bill"
+shop_list = ["bananas","milk","peanut-butter"]
+        </code></pre>
+    </p>
+
+    <p>Variable names are case-sensitive
+        <pre>
+            <code class="language-python">
+a = 1
+A = "soft bread"
+
+print(a) # 1
+print(A) # soft bread
+# a and A variables are not the same
+            </code>
+        </pre>
+
+    </p>
+
+    <p>Varibles can be a whole expression
+        <pre>
+            <code class="language-python">
+x = (2+3)/2
+y = 1 == 2
+z = range(10,100,10)
+            </code>
+        </pre>
+</p>
+</section>
+
+
+{% endblock content %}

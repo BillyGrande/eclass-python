@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+
+<section id="Set-and-Dict">
+    <h1 class="section-heading">
+Set and Dicts
+    </h1>
+    <p>
+Sets and sets have many similarities with sequence but their main difference is they have unique items.
+    </p>
+</section>
+
+<section id="Set">
+    <h2 class="section-heading">
+Set
+    </h2>
+    <p>
+Sets are like lists but they must have unique items. They can't have duplicates, but we are able to modify their items.
+Also their items cannot be other immutable types like list.
+    </p>
+    <p>
+    To initialize a set we use '{}'
+        <pre><code class="language-python">
+my_set = {1,2,"hello"} # No duplicate values
+        </code></pre>
+    </p>
+</section>
+
+<section id="Dict">
+    <h2 class="section-heading">
+Dict
+    </h2>
+    <p>
+Dicts are like sets but they consit of key:value pairs for times. Keys cannot be duplicates.
+Also dicts are changeable. To initialize a dict we use '{}' too, but its items must follow the notion of key:value
+        <pre><code class="language-python">
+my_dict = {
+  "Tutorial": "Pyton",
+  "one" : 1,
+   1 : "one",
+   "fruits" : [apple, banana, orange]
+}
+
+print(my_dict["one"]) # Will print 1
+print(my_dict[1]) # Will print "one"
+print(my_dict[fruits]) # Will print the list [apple, banana, orange]
+        </code></pre>
+    </p>
+</section>
+
+
+{% endblock content %}
