@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+
+<section id="Loops">
+    <h1 class="section-heading">
+        Loops
+    </h1>
+    <p>
+        Loops help us to write less code and repeat part of our code if a statement is True.
+    </p>
+
+    <p>We have 2 kinds of loops:
+        <ul>
+            <li>While loops</li>
+            <li>For loops</li>
+        </ul>
+    </p>
+</section>
+
+<section id="While">
+    <h2 class="section-heading">
+        While
+    </h2>
+    <p>
+        With while loop, we can execute a set of statements as lon as condition is True.
+        <pre><code class="language-python">
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+
+# This will print 1,2,3,4,5 in order.
+        </code></pre>
+    </p>
+</section>
+
+<section id="Break">
+    <h3 class="section-heading">
+        Break
+    </h3>
+    <p>
+        With break keyword we can stop the loop even if the while condition is True.
+        <pre><code class="language-python">
+i = 1
+while i < 6:
+  if i == 3:
+    break
+  print(i)
+  i += 1
+
+# This will print 1,2 and then leave the loop.
+        </code></pre>
+
+    </p>
+</section>
+
+<section id="Continue">
+    <h3 class="section-heading">
+        Continue
+    </h3>
+    <p>
+        With continue keyword we skip the current iteration and continue with next one.
+        <pre><code class="language-python">
+i = 1
+while i < 6:
+  if i == 3:
+    continue
+  print(i)
+  i += 1
+
+# This will print 1,2,4,5. It will skip number 3.
+        </code></pre>
+
+    </p>
+</section>
+
+
+<section id="For">
+    <h2 class="section-heading">
+        For
+    </h2>
+    <p>
+        For loops are very common in python.
+        A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
+        This is less like the for keyword in other programming languages,
+        and works more like an iterator method as found in other object-orientated programming languages.
+        With the for loop we can execute a set of statements, once for each item in a list, tuple, set etc.
+        <pre><code class="language-python">
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+
+# This will print apple, banana, cherry in order.
+        </code></pre>
+    </p>
+
+    <pre>
+        <code class="language-python">
+for x in "apple":
+  print(x)
+
+# This will print a,p,p,l,e in order.
+        </code>
+    </pre>
+</section>
+
+
+<section id="Range">
+    <h3 class="section-heading">
+        Range
+    </h3>
+    <p>
+        To loop through a set of code a specified number of times, we can use the range() function
+        <pre><code class="language-python">
+for x in range(6):
+  print(x)
+
+# Thsi will prin 1,2,3,4,5 in order.
+        </code></pre>
+    </p>
+</section>
+
+<section id="Pass">
+    <h3 class="section-heading">
+        Pass
+    </h3>
+    <p>
+        For loops cannot be empty, but if you for some reason have a for loop with no content, put in the pass statement to avoid getting an error.
+        <pre><code class="language-python">
+for x in [0, 1, 2]:
+  pass
+        </code></pre>
+    </p>
+</section>
+
+
+<section id="Break-and-Continue">
+    <h3 class="section-heading">
+        Break and Continue
+    </h3>
+    <p>
+        Like the while loop we can use the break and continue keywords in for loops too.
+        <pre><code class="language-python">
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    break
+  print(x)
+
+# This will print apple.
+
+ fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    continue
+  print(x)
+
+# This will print apple, cherry.
+        </code></pre>
+    </p>
+</section>
+
+<section id="Nested-Loops">
+    <h2 class="section-heading">
+        Nested Loops
+    </h2>
+    <p>
+        A nested loop is a loop inside a loop.
+
+        The "inner loop" will be executed one time for each iteration of the "outer loop":
+        <pre><code class="language-python">
+for x in adj:
+  for y in fruits:
+    print(x, y)
+        </code></pre>
+
+    </p>
+</section>
+
+
+{% endblock content %}

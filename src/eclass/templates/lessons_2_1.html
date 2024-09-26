@@ -45,7 +45,7 @@
         With that in mind we can move on with the if statement.
     </p>
     <p>
-        Whith if statement if the condition is True, we will execute the block of the if, ele we will skip it.
+        With if statement, if the condition is True, we will execute the block of the if, else we will skip it.
         <pre><code class="language-python">
 a = 1
 b = 10
@@ -55,6 +55,50 @@ if b > a:
     </p>
 </section>
 
+<section id="Else">
+    <h2 class="section-heading">
+        Else
+    </h2>
+    <p>
+       With else if the value of the if statement is false, we will execute the else block.
+        <pre><code class="language-python">
+a = 100
+b = 10
+if b > a:
+  print("b is greater than a") # This won't be executed
+else:
+  print("b is not greater than a") This will be
+        </code></pre>
+    </p>
+</section>
+
+
+<section id="Elif">
+    <h2 class="section-heading">
+        Elif
+    </h2>
+    <p>
+        We can add more if statements after our first if statment, using the elif keyword.
+        If the first if statement if False, then the first elif statement that is true will be executed.
+        If none elif statement is true if we have an else statement, then the else block will be executed.
+        <pre><code class="language-python">
+a = 10
+b = 10
+
+if b > a:
+  print("b is greater than a") # This won't be executed
+elif b == a:
+  print("b is equal to a") # This will be executed
+elif b < a:
+  print("b is not greater than a") # This will be skipped, because the first elif got executed
+else:
+  print("How did you end up here?")
+
+        </code></pre>
+    </p>
+
+    <p>As you can see, we can have multiple elifs.</p>
+</section>
 
 
 {% endblock content %}
