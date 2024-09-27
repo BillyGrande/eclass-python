@@ -24,7 +24,7 @@
               <img src="{{ url_for('static',filename='burger.svg') }}" alt="burger" width="20" height="20">
             </button>
           </div>  
-            <a href="/" class="sidebar-banner">
+            <a href="{{ url_for('.lessons', chapter=0, section=0) }}" class="sidebar-banner">
             Python Eclass
             </a>
             <div>Python the right way</div>
@@ -54,53 +54,24 @@
               0. Introduction
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=0, section=0) }}">Welcome</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=0, section=0, _anchor='What-is-python') }}">What is Python</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=0, section=0, _anchor='Python-history') }}">Python History</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=0, section=0, _anchor='Dynamic-typing') }}">Dynamic typing</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=0, section=0, _anchor='Basic-syntax') }}">Basic Syntax</a></li>
-                </ul>
               </li>
             </li>
             <li class="group">
               1. Data Types
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=1, section=0) }}">Numbers</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=0, _anchor='Integer') }}">Integer</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=0, _anchor='Float') }}">Float</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=0, _anchor='Complex') }}">Complex</a></li>
-                </ul>
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=1, section=1) }}">Text</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=1, _anchor='String') }}">String</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=1, _anchor='Character') }}">Character</a></li>
-                </ul>
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=1, section=2) }}">Sequences</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=2, _anchor='List') }}">List</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=2, _anchor='Tuple') }}">Tuple</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=2, _anchor='Range') }}">Range</a></li>
-                </ul>
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=1, section=3) }}">Set and Dicts</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=3, _anchor='Set') }}">Set</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=3, _anchor='Dict') }}">Dict</a></li>
-                </ul>
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=1, section=4) }}">Other types</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=4, _anchor='Boolean') }}">Boolean</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=4, _anchor='None') }}">None</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=1, section=4, _anchor='Byte') }}">Byte</a></li>
-                </ul>
               </li>
             <li class="group">
               2. Python Basics
@@ -109,27 +80,12 @@
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=2, section=1) }}">Conditionals</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=1, _anchor='If') }}">If</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=1, _anchor='Else') }}">Else</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=1, _anchor='Elif') }}">Elif</a></li>
-                </ul>
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=2, section=2) }}">Loops</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=2, _anchor='While') }}">While</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=2, _anchor='For') }}">For</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=2, _anchor='Nested-Loops') }}">Nested Loops</a></li>
-                </ul>
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=2, section=3) }}">Functions</a>
-                <ul class="tab">
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=3, _anchor='Defining-and-calling-a-function') }}">Defining and calling function</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=3, _anchor='Arguments') }}">Arguments</a></li>
-                  <li><a href="{{ url_for('.lessons', chapter=2, section=3, _anchor='Retrun-values') }}">Return values</a></li>
-                </ul>
               </li>
               <li class="">
                 <a href="{{ url_for('.lessons', chapter=2, section=4) }}">Liabraries</a>
