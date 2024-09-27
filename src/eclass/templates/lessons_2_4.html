@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!--
+<section id="">
+    <h1 class="section-heading">
+    </h1>
+    <p></p>
+</section>
+
+<section id="">
+    <h2 class="section-heading">
+    </h2>
+    <p></p>
+</section>
+
+<pre><code class="language-python">
+
+</code></pre>
+-->
+<section id="">
+    <h1 class="section-heading">
+        Libraries
+    </h1>
+    <p>
+        Libriaries is a collection of already defined functions, already programmed that we can use in our code.
+    </p>
+    <p>
+        Libraries are useful because we can used complex functions without the need to program them.
+    </p>
+    <p>
+        To use a library we use the import keyword and the library name, we import libraries preferably at the start of the program.
+        <pre><code class="language-python">
+# Let's calculate the square root of 16
+import math # We import math library
+
+A = 16
+print(math.sqrt(A))
+# We use the library name and the function we want, sqrt() in our case
+# This will print 4
+        </code></pre>
+
+    </p>
+
+    <p>
+        We can only import a specif function of a library using from keyword.
+        <pre>
+            <code class="language-python">
+# Importing specific items
+from math import sqrt, sin
+
+A = 16
+B = 3.14
+print(sqrt(A))
+print(sin(B))
+            </code>
+        </pre>
+
+    </p>
+</section>
+
+
+{% endblock content %}

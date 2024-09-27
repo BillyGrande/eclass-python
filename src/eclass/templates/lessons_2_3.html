@@ -24,13 +24,116 @@
         Functions
     </h1>
     <p>
+        A function is a block of code which only runs when it is called.
+        You can pass data, known as parameters, into a function.
+        A function can return data as a result.
+    </p>
 
+    <p>Functions are useful, because we can reuse parts of our code, without retyping them.</p>
+</section>
+
+<section id="Defining-and-calling-a-function">
+    <h2 class="section-heading">
+    Defining and calling a function
+    </h2>
+
+    <p>
+        To create a function we use the def keyword, then the name of the function and after inside parentehsis,
+        we are defining the arguments. In next indented line we define the body of the function.
+    </p>
+
+    <p>
+        To call the function we just use the functions name followed by parenthesis.
         <pre><code class="language-python">
+# To define the function
 
+def my_function():
+  print("Hello from a function")
+
+# To use the function.
+my_function()
         </code></pre>
 
     </p>
 </section>
+
+
+<section id="Arguments">
+    <h2 class="section-heading">
+        Arguments
+    </h2>
+    <p>
+        Information can be passed into functions as arguments.
+    </p>
+    <p>
+        Arguments are specified after the function name, inside the parentheses.
+        You can add as many arguments as you want, just separate them with a comma.
+
+    </p>
+    <p>
+        Let's create a function, that accepts a name as an argument and prints the name together with a "Hello" message.
+
+        <pre><code class="language-python">
+def greetings(name):
+  print("Hello, " + name)
+
+greetings("Bill")  # Hello, Bill
+greetings("Maria") # Hello, Maria
+        </code></pre>
+    </p>
+
+    <p>
+        We can use multiple arguments.
+        <pre>
+            <code class="language-python">
+def greetings_fullname(first_name,last_name):
+  print("Hello " + first_name + " " + last_name)
+
+greetings("Joe", "Doe") # Hello Joe Doe
+greetings("Doe", "Joe") # Hello Doe Joe
+            </code>
+        </pre>
+    </p>
+
+    <p>As you see, the order we pass the arguments matters.</p>
+
+    <section id="Keyword Arguments">
+        <h3 class="section-heading">
+            Keyword Arguments
+        </h3>
+        <p>
+            You can also send arguments with the key = value syntax.
+
+            This way the order of the arguments does not matter.
+            <pre><code class="language-python">
+def my_function(child3, child2, child1):
+  print("The youngest child is " + child3)
+
+my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
+# The youngest child is Emil Tobias Linus
+            </code></pre>
+        </p>
+    </section>
+
+</section>
+
+<section id="Return-values">
+    <h2 class="section-heading">
+        Return values
+    </h2>
+    <p>
+        With functions we can return values, using the retun keyword.
+        <pre><code class="language-python">
+def my_function(x):
+  return 5 * x
+
+print(my_function(3)) # 15
+print(my_function(5)) # 25
+print(my_function(9)) # 45
+        </code></pre>
+    </p>
+</section>
+
 
 
 {% endblock content %}
