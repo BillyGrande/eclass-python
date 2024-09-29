@@ -20,9 +20,11 @@
     <nav class="sidebar">    
         <div class="sidebar-header">
           <div class="right-buttons">
+            <!--
             <button class="collapse">
               <img src="{{ url_for('static',filename='burger.svg') }}" alt="burger" width="20" height="20">
             </button>
+            -->
           </div>  
             <a href="{{ url_for('.lessons', chapter=0, section=0) }}" class="sidebar-banner">
             Python Eclass
@@ -91,23 +93,25 @@
                 <a href="{{ url_for('.lessons', chapter=2, section=4) }}">Liabraries</a>
               </li>
 
-
-
-
-
             </li>
           </ul>
           <ul id="ul-tests" class="full-list" hidden>
             <li class="group">
-              0. Introduction
+                Individual Chapter Tests
             <li class="">
-            <a href="{{ url_for('.quiz', chapter=0) }}">Test 1.1</a>
+            <a href="{{ url_for('.quiz', chapter=0) }}">Test for Chapter 0</a>
             </li>
+            <li class="">
+              <a href="{{ url_for('.quiz', chapter=1) }}">Test for Chapter 1</a>
+            </li>
+            <li class="">
+                <a href="{{ url_for('.quiz', chapter=2) }}">Test for Chapter 2</a>
+            </li> 
             </li>
             <li class="group">
-              1. Data Types
+                All Chapters Test
             <li class="">
-            <a href="{{ url_for('.test_welcome') }}">Test 1.1</a>
+            <a href="{{ url_for('.quiz', chapter=-1) }}">Test on Numbers and Text</a>
             </li>
             </li>
           </ul>

@@ -16,7 +16,7 @@ f.close()
 
 @app.route("/")
 def hello_world():
-    return render_template('hello.html')
+    return render_template(f'lessons_0_0.html')
 
 @app.route("/hello/<message>")
 def hello(message=None):
@@ -138,23 +138,18 @@ def login():
             if request.args.get('previous', default=False) == "quiz":
                 chapter = request.args.get('chapter', default=False)
                 return redirect(url_for('quiz', chapter=chapter))
-        return redirect(url_for('welcome'))
+        return redirect(url_for('lessons',chapter=0,section=0))
     if session.get('logged_in'):
         return redirect(url_for('profile'))
     else:
-        return '''
-            <form method="post">
-                <p><input type=text name=username>
-                <p><input type=submit value=Login>
-            </form>
-            '''
+        return render_template('login.html')
 
 @app.route('/logout')
 def logout():
     # remove the username from the session if it's there
     session.pop('username', None)
     session.pop('logged_in', None)
-    return redirect(url_for('welcome'))
+    return redirect(url_for('lessons',chapter=0,section=0))
 
 
 def _urlencoded_to_list(text):
