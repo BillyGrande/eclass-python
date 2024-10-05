@@ -108,7 +108,7 @@ def static_quiz_finish(chapter=None, id=None):
 def profile(username=None):
     if session.get('logged_in'):
         username = username=session.get('username')
-        chapters = [0, 1]
+        chapters = [0, 1, 2]
         scores = {}
         average = {}
         attempts = {}
