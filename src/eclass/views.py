@@ -6,6 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.sql import func
 from flask import session
 import os
+import random
 
 
 secret_path = os.path.dirname(os.path.realpath(__file__)) +"/.secret"
@@ -38,8 +39,25 @@ def lessons(chapter=None,section=None):
 @app.route("/tests/<chapter>/<id>", methods=['GET', 'POST'])
 def quiz(chapter=None, id=None):
     if id == None:
-        session['ids'] = ids=["1","2","3"]
-        return render_template('quiz_index.html', chapter=chapter, ids=["1","2","3"], length=len([1,2,3]), id=["1","2","3"][0])
+        ### GET IDS HERE FOR EVERY CHAPTER
+        #session['ids'] = ids=["1","2","3"]
+        if chapter != "-1":
+            chapter_ids = _chapter_ids(int(chapter))
+            session['ids'] = chapter_ids
+            print("0")
+        else:
+            #statement_last_id = db_session.query(Question).order_by(Question.id.desc()).first()
+            #last_id = db_session.scalars(statement_last_id).all()[0]
+            last_id = Question.query.all()[-1].id
+            random_ids = random.sample(range(1,last_id),5)
+            chapter_ids = []
+            print("-1")
+            print(random_ids)
+            for r in random_ids:
+                chapter_ids.append(str(r))
+            print(chapter_ids)
+            session['ids'] = chapter_ids
+        return render_template('quiz_index.html', chapter=chapter, ids=chapter_ids, length=len(chapter_ids), id=chapter_ids[0])
     else:
         answer = None
         if session.get('logged_in'):
@@ -60,6 +78,15 @@ def quiz(chapter=None, id=None):
             length=len(ids), id=id, answer=answer)
         else:
             return render_template('quiz_login.html', chapter=chapter)
+
+def _chapter_ids(chapter):
+    statement = select(Question).filter_by(chapter=chapter)
+    questions = db_session.scalars(statement).all()
+    ids = []
+    for q in questions:
+        ids.append(str(q.id))
+    
+    return ids
 
 # ["1","2","3"].join("|").split("|")
 
@@ -108,7 +135,7 @@ def static_quiz_finish(chapter=None, id=None):
 def profile(username=None):
     if session.get('logged_in'):
         username = username=session.get('username')
-        chapters = [0, 1, 2]
+        chapters = [0, 1, 2, -1]
         scores = {}
         average = {}
         attempts = {}
@@ -120,7 +147,7 @@ def profile(username=None):
             best_score = db_session.scalars(best_score_query).one()
             total_attempts = db_session.scalars(total_attempts_query).one()
             average_score = db_session.scalar(sum_score_qurey)
-            scores[chapter] = best_score if best_score != None else 0
+            scores[chapter] = int(best_score) if best_score != None else 0
             attempts[chapter] = total_attempts
             average[chapter] = int(average_score / total_attempts) if total_attempts > 0 else 0
         print(scores)

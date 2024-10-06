@@ -3,9 +3,14 @@
 
 
 <div id="quiz-card">
-<h1>Chapter {{ chapter }}</h1>
 
-<h2>Quiz questions For Chapter {{ chapter }}</h2>
+{% if chapter == "-1" %}
+<h1>All Chapters</h1>
+<h2>Quiz Questions For All Chapters</h2>
+{% else %}
+<h1>Chapter {{ chapter }}</h1>
+<h2>Quiz Questions For Chapter {{ chapter }}</h2>
+{% endif %}
 
 <input hidden name="ids-list" value="{{ ids }}">
 
