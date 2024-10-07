@@ -9,7 +9,8 @@ from sqlalchemy import text
 def _add_users():
    users = [
       User("testuser", 'test@localhost'),
-      User("billy", 'billy@localhost')
+      User("billy", 'billy@localhost'),
+      User("maria" "maria@email.com")
    ]
    for u in users:
       db_session.add(u)
@@ -29,7 +30,7 @@ def _add_questions():
       Question(1, "my_list = [1,2,3,'hello']. How to get the character 'h'", "my_list[-1][-1]", "my_list[4][1]", "my_list[4][0]", "my_list[-1][0]", "a4"),
       Question(1, "Are tuples changeable?", "Yes", "No", "No but we can use append", "Yes and we can use append", "a2"),
       Question(1, "In which sequence this will evaluate? range(10, 2, -2)", "(2,4,6,8)", "(10,8,6,4)", "(2,4,6,8,10)", "(4,6,8,10)", "a2"),
-      Question(1, "my_dict = {'Tutorial':'Python', 0: 1, '0':0}. What it the value of my_dict[0]?", "Tutorial:'Python'", "Tutorial", "1", "0", "a4"),
+      Question(1, "my_dict = {'Tutorial':'Python', 0: 1, '0':0}. What it the value of my_dict[0]?", "Tutorial:'Python'", "Tutorial", "1", "0", "a3"),
       Question(2, "Which variable name is not valid?", "1apple", "_apple", "ONE_apple", "app1e", "a1"),
       Question(2, "Which is the less than or equal operator?", "<", "=<", "<=", "<<", "a3"),
       Question(2, "def my_fucntion(x,y) \n retutn x + y", "1", "1", "1", "1", "a1")
